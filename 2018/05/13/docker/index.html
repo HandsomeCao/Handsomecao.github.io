@@ -81,6 +81,11 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
 
     
 
@@ -504,15 +509,26 @@
 <ol>
 <li>自己或者找到一个别人配好的适合自己生产环境的镜像。通常自己配镜像是通过<strong>DockerFile</strong>文件</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">列出本机的所有 image 文件。</span><br><span class="line"></span><br><span class="line">$ docker image ls</span><br><span class="line"></span><br><span class="line">删除 image 文件</span><br><span class="line"></span><br><span class="line">$ docker image rm [imageName]</span><br></pre></td></tr></table></figure>
+<pre><code class="bash">列出本机的所有 image 文件。
+
+$ docker image ls
+
+删除 image 文件
+
+$ docker image rm [imageName]
+</code></pre>
 <p>image 文件是通用的，一台机器的 image 文件拷贝到另一台机器，照样可以使用。一般来说，为了节省时间，我们应该尽量使用别人制作好的 image 文件，而不是自己制作。即使要定制，也应该基于别人的 image 文件进行加工，而不是从零开始制作。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pull 命令从官网抓取hello-world镜像</span></span><br><span class="line">$ docker image pull library/hello-world</span><br></pre></td></tr></table></figure>
+<pre><code class="bash"># pull 命令从官网抓取hello-world镜像
+$ docker image pull library/hello-world
+</code></pre>
 <ol start="2">
 <li>利用得到的image文件，生成容器实例</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker container run hello-world</span><br></pre></td></tr></table></figure>
+<pre><code class="bash">$ docker container run hello-world
+</code></pre>
 <p>在docker中最常用的就是<code>docker run</code>命令，也是最重要的。这里就用实验室所用的<code>docker run</code>命令展现其每个参数的意义</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -p 7981:8888 -it --name=[容器名称] -v /home/cao/workspace:/root/workspace --device /dev/nvidia-uvm --device /dev/nvidia0 --device /dev/nvidia1 [镜像名称] /bin/bash</span><br></pre></td></tr></table></figure>
+<pre><code class="bash">$ docker run -p 7981:8888 -it --name=[容器名称] -v /home/cao/workspace:/root/workspace --device /dev/nvidia-uvm --device /dev/nvidia0 --device /dev/nvidia1 [镜像名称] /bin/bash
+</code></pre>
 <ul>
 <li><strong>-p</strong> : 端口映射，即容器的8888端口映射到本机的7981端口</li>
 <li><strong>-it</strong>  : 表示进入容器之后，进入命令行交互模式</li>
@@ -598,7 +614,7 @@
 
     <!-- Sidebar Email -->
     <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-        youremail@email.com
+        handsomecao@163.com
         <b class="caret"></b>
     </a>
 </div>
@@ -868,6 +884,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -878,6 +900,13 @@ It will not impact the appearance and can give developers a lot of support :)
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>

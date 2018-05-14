@@ -81,6 +81,11 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
 
     
 
@@ -551,13 +556,38 @@
 <ul>
 <li>线性回归实现: </li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Linear Regression Model</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinearRegression</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input_size, output_size)</span>:</span></span><br><span class="line">        super(LinearRegression, self).__init__()</span><br><span class="line">        self.linear = nn.Linear(input_size, output_size)  </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        out = self.linear(x)</span><br><span class="line">        <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure>
+<pre><code class="python"># Linear Regression Model
+class LinearRegression(nn.Module):
+    def __init__(self, input_size, output_size):
+        super(LinearRegression, self).__init__()
+        self.linear = nn.Linear(input_size, output_size)  
+
+    def forward(self, x):
+        out = self.linear(x)
+        return out
+</code></pre>
 <hr>
 <h3 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h3><blockquote>
 <p>逻辑回归也称为对数几率回归。明明叫回归，但却是<strong>分类问题</strong>中极为重要的手段。其思想也是基于线性回归，属于<strong>广义线性回归</strong>模型。</p>
 </blockquote>
 <p>对于二分类问题来讲，给你一个输入特征向量$X$，它可能对应一张图片，你想识别看它是否是一张猫的图片， 通过一个算法输出预测$\hat{y}$， 也就是对于实际值$y$的估计。换句话说，也就是想通过输入图片$X$， 想通过输出$\hat{y}$来知道这张图片是猫的几率有多大。用$w$来表示逻辑回归的参数，$x$是一个$n_{x}$维的特征向量，$b$表示这个模型中所要用到的偏置。如果用<strong>线性回归</strong>的方法来表示这个模型:<br>$$<br>\hat{y} = wx + b<br>$$<br>这时候我们得到一个关于输入$x$的线性函数，但是对于这个二元分类来讲，似乎并不是一个很好的算法。因为我们想要得到的是这张图片是否为猫的概率，所以输出值应该介于<em>0 ~ 1</em>之间，而通过<strong>线性回归</strong>输出的$\hat{y}$可能要比1大很多，甚至为负值，这样来说这个模型就没有意义了，因此在<strong>逻辑回归</strong>当中，我们应将输出局限在<em>0~1</em>之间， 所以增加了一个<em>Sigmoid</em>函数将线性函数转换为非线性函数。<br>$$<br>\delta(z) = \frac{1}{1+e^{-z}}<br>$$<br>使用<strong>matplotlib</strong>画出<em>Sigmoid</em>的图形表示如下，可以看出输出值都在<em>0~1</em>之间</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 画sigmoid</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(x)</span>:</span></span><br><span class="line">    a = []</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> x:</span><br><span class="line">        a.append(<span class="number">1</span>/(<span class="number">1</span>+math.exp(-item)))</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line">x = np.arange(<span class="number">-10</span>, <span class="number">10</span>, <span class="number">0.2</span>)</span><br><span class="line">sig = sigmoid(x)</span><br><span class="line">plt.plot(x, sig)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<pre><code class="python"># 画sigmoid
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+%matplotlib inline
+
+def sigmoid(x):
+    a = []
+    for item in x:
+        a.append(1/(1+math.exp(-item)))
+    return a
+
+x = np.arange(-10, 10, 0.2)
+sig = sigmoid(x)
+plt.plot(x, sig)
+plt.show()
+</code></pre>
 <p><img src="https://i.imgur.com/IRPHg7V.png" alt=""></p>
 <p>如果$z$非常大那么$e^{-z}$将会接近于0，那么<strong>sigmoid</strong>函数的值将会近似等于1除以1加上某个非常接近于0的项，因为$e$ 的指数如果是个绝对值很大的负数的话，这项将会接近于0，所以如果$z$很大的话那么关于$z$的<strong>sigmoid</strong>函数会非常接近1。相反地，如果$z$非常小或者说是一个绝对值很大的负数，那么关于$e^{-z}$这项会变成一个很大的数，你可以认为这是1除以1加上一个非常非常大的数，所以这个就接近于0 。</p>
 <p>所以要将识别猫这个任务所得到的结果规定在<em>0~1</em>之间，那么久需要对刚才定义的线性模型增加一个<strong>sigmoid</strong>函数，使其变为非线性:<br>$$<br>\hat{y} = \delta(wx+b)<br>$$</p>
@@ -577,7 +607,23 @@
 <p>当$y=0$时损失函数$L=-ln(1-\hat{y})$，如果想要损失函数$L$尽可能得小，那么$\hat{y}$就要尽可能小，因为<strong>sigmoid</strong>函数取值$[0,1]$，所以$\hat{y}$会无限接近于0。</p>
 <p>这只是对于单个样本的损失函数，对于总的样本，需将所有代价加起来除以m：<br>$$<br>J(w)=\frac{1}{m}\sum_{i=1}^{m}L(\hat{y}, y)<br>$$<br>接下来要做的就是通过<strong>梯度下降法</strong>求得导数，再如之前一样更新参数$w$和$b$的值即可。</p>
 <p>同样使用<strong>pytorch</strong>来实现逻辑回归模型:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LogisticRegression</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input_size, num_classes)</span>:</span></span><br><span class="line"></span><br><span class="line">        super(LogisticRegression, self).__init__()</span><br><span class="line"></span><br><span class="line">        self.linear = nn.Linear(input_size, num_classes)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line"></span><br><span class="line">        out = self.linear(x)</span><br><span class="line">        out = torch.sigmoid(out)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure>
+<pre><code class="python">class LogisticRegression(nn.Module):
+
+    def __init__(self, input_size, num_classes):
+
+        super(LogisticRegression, self).__init__()
+
+        self.linear = nn.Linear(input_size, num_classes)
+
+
+
+    def forward(self, x):
+
+        out = self.linear(x)
+        out = torch.sigmoid(out)
+
+        return out
+</code></pre>
 
         
     
@@ -647,7 +693,7 @@
 
     <!-- Sidebar Email -->
     <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-        youremail@email.com
+        handsomecao@163.com
         <b class="caret"></b>
     </a>
 </div>
@@ -917,6 +963,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -927,6 +979,13 @@ It will not impact the appearance and can give developers a lot of support :)
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>
