@@ -496,23 +496,32 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <h2 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h2><h3 id="神经元"><a href="#神经元" class="headerlink" title="神经元"></a>神经元</h3><p>如图，一个<strong>神经元通常有如下的结构</strong>：<img src="https://i.imgur.com/BT6bd4A.png" alt="Snipaste_2018-05-08_14-41-31"></p>
-<p>对于一组输入${a_{1}, a_{2}….,a_{k}}$，分别施于不同的<strong>权重</strong>(weight)，再通过加上一个<strong>偏置</strong>(bias)，得到神经元的<strong>线性模型</strong>,也就是之前学过的线性规划:<br>$$<br>z=a_{1}w_{1}+a_{2}w_{2}+……+a_{k}w_{k}+b<br>$$</p>
-<p>用向量化表示为:<br>$$<br>z=w^{T}a+b<br>$$<br>由于线性变化所能解决的问题并不多，所以在输出施加一个<strong>激活函数</strong>(<em>activate function</em>)， 以在方程模型中引入非线性，同时另外的作用是可对输出进行限制:<br>$$<br>a_{out}=\delta(z)=\delta(w^{T}a_{in}+b)<br>$$</p>
-<ul>
+<p>对于一组输入${a<em>{1}, a</em>{2}….,a_{k}}$，分别施于不同的<strong>权重</strong>(weight)，再通过加上一个<strong>偏置</strong>(bias)，得到神经元的<strong>线性模型</strong>,也就是之前学过的线性规划:</p>
+<script type="math/tex; mode=display">
+z=a_{1}w_{1}+a_{2}w_{2}+......+a_{k}w_{k}+b</script><p>用向量化表示为:</p>
+<script type="math/tex; mode=display">
+z=w^{T}a+b</script><p>由于线性变化所能解决的问题并不多，所以在输出施加一个<strong>激活函数</strong>(<em>activate function</em>)， 以在方程模型中引入非线性，同时另外的作用是可对输出进行限制:</p>
+<script type="math/tex; mode=display">
+a_{out}=\delta(z)=\delta(w^{T}a_{in}+b)</script><ul>
 <li><strong>实例</strong></li>
 </ul>
 <p><img src="https://i.imgur.com/ZKWIH2G.png" alt="Snipaste_2018-05-08_14-59-43"></p>
-<p>对于上方的神经元实例，输入$a=[2, -1, 1]^{T}$,对于其三个输入分别施加的权重为$w=[1,-2, -1]^{T}$，将偏置<em>bias</em>设置为$1$，激活函数选择<strong>Sigmoid</strong>函数$\delta(z)=\frac{1}{1+e^{-z}}$，所以计算结果可以得到:<br>$$<br>a_{out}=\delta(w^{T}x+b)=\frac{1}{1+e^{-(2<em>1+(-1)</em>(-2)+1*(-1)+1)}}=0.98<br>$$</p>
-<h3 id="全连接神经网络"><a href="#全连接神经网络" class="headerlink" title="全连接神经网络"></a>全连接神经网络</h3><p>对于许多神经元，将其组合起来，对于网络每一层，设置不同数量的神经元，即可得到一个<strong>全连接前馈神经网络</strong>：</p>
+<p>对于上方的神经元实例，输入$a=[2, -1, 1]^{T}$,对于其三个输入分别施加的权重为$w=[1,-2, -1]^{T}$，将偏置<em>bias</em>设置为$1$，激活函数选择<strong>Sigmoid</strong>函数$\delta(z)=\frac{1}{1+e^{-z}}$，所以计算结果可以得到:</p>
+<script type="math/tex; mode=display">
+a_{out}=\delta(w^{T}x+b)=\frac{1}{1+e^{-(2*1+(-1)*(-2)+1*(-1)+1)}}=0.98</script><h3 id="全连接神经网络"><a href="#全连接神经网络" class="headerlink" title="全连接神经网络"></a>全连接神经网络</h3><p>对于许多神经元，将其组合起来，对于网络每一层，设置不同数量的神经元，即可得到一个<strong>全连接前馈神经网络</strong>：</p>
 <p><img src="https://i.imgur.com/7ivKJwZ.png" alt="Snipaste_2018-05-08_15-11-01"></p>
 <p>全连接神经网络通过输入的特征向量$x$，得到输出$y$，而网络层中的权重$w$和偏置$b$即是，网络中的参数。在训练过程中，可通过<strong>反向传播</strong>和<strong>梯度下降算法</strong>进行更新。</p>
 <h3 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h3><p>这里介绍三种常见激活函数：</p>
 <ul>
-<li><p><strong>Sigmoid</strong>:<br>$$<br>f(z)=\frac{1}{1+e^{-z}}<br>$$<br>其图像可表示为:</p>
+<li><p><strong>Sigmoid</strong>:</p>
+<script type="math/tex; mode=display">
+f(z)=\frac{1}{1+e^{-z}}</script><p>其图像可表示为:</p>
 <p><img src="https://i.imgur.com/IRPHg7V.png" alt=""></p>
 </li>
 </ul>
-<p>很明显，可以看出经过<strong>Sigmoid</strong>函数作用后，输出响应的值域被压缩到了[0,1]之间，这也是<strong>逻辑回归</strong>中用到它的原因。对<strong>Sigmoid</strong>函数求导：<br>$$<br>\frac{d}{dz}f(z)=\frac{e^{-z}}{(1+e^{-z})^{2}}<br>$$<br>对梯度画出图可见:</p>
+<p>很明显，可以看出经过<strong>Sigmoid</strong>函数作用后，输出响应的值域被压缩到了[0,1]之间，这也是<strong>逻辑回归</strong>中用到它的原因。对<strong>Sigmoid</strong>函数求导：</p>
+<script type="math/tex; mode=display">
+\frac{d}{dz}f(z)=\frac{e^{-z}}{(1+e^{-z})^{2}}</script><p>对梯度画出图可见:</p>
 <p><img src="https://i.imgur.com/v9Vx5WH.png" alt="sigmoid_梯度"></p>
 <p><strong>不足之处</strong>：</p>
 <ol>
@@ -522,24 +531,41 @@
 <ul>
 <li><strong>Tanh：</strong></li>
 </ul>
-<p>$$<br>f(z)=\frac{e^{z}-e^{-z}}{e^{z}+e^{-z}}<br>$$</p>
-<p><img src="https://i.imgur.com/vBRVjtq.png" alt="tanh"></p>
+<script type="math/tex; mode=display">
+f(z)=\frac{e^{z}-e^{-z}}{e^{z}+e^{-z}}</script><p><img src="https://i.imgur.com/vBRVjtq.png" alt="tanh"></p>
 <blockquote>
 <p>Tanh函数在Sigmoid函数的基础上解决了<strong>均值问题</strong>。</p>
 </blockquote>
-<p><strong>Tanh</strong>函数又称作<strong>双曲正切函数</strong>，其函数范围为$(-1,1)$，输出的响应均值为0。<strong>Tanh</strong>函数与<strong>Sigmoid</strong>函数的关系为:<br>$$<br>Tanh(z)=2Sigmoid(2z)-1<br>$$<br>所以，求<strong>Tanh</strong>的导数:<br>$$<br>\frac{d}{dz}Tanh(z)=4Sigmoid(2z)*Sigmoid(2z)^{‘}=\frac{4e^{-2z}}{(1+e^{-2z})^{3}}<br>$$<br>具体地：<br>$$<br>\frac{d}{dz}Tanh(z)=1-(tanh(z))^{2}<br>$$</p>
-<p>由于<strong>Tanh</strong>函数仍基于<strong>Sigmoid</strong>函数，所以使用它仍依然会有<strong>“梯度饱和”</strong>现象。</p>
+<p><strong>Tanh</strong>函数又称作<strong>双曲正切函数</strong>，其函数范围为$(-1,1)$，输出的响应均值为0。<strong>Tanh</strong>函数与<strong>Sigmoid</strong>函数的关系为:</p>
+<script type="math/tex; mode=display">
+Tanh(z)=2Sigmoid(2z)-1</script><p>所以，求<strong>Tanh</strong>的导数:</p>
+<script type="math/tex; mode=display">
+\frac{d}{dz}Tanh(z)=4Sigmoid(2z)*Sigmoid(2z)^{'}=\frac{4e^{-2z}}{(1+e^{-2z})^{3}}</script><p>具体地：</p>
+<script type="math/tex; mode=display">
+\frac{d}{dz}Tanh(z)=1-(tanh(z))^{2}</script><p>由于<strong>Tanh</strong>函数仍基于<strong>Sigmoid</strong>函数，所以使用它仍依然会有<strong>“梯度饱和”</strong>现象。</p>
 <ul>
 <li><strong>ReLU</strong></li>
 </ul>
 <blockquote>
 <p>为了避免<strong>梯度饱和</strong>现象的发生，在神经网络中引入了修正线性单元(<em>Rectified Linear Unit</em>)。</p>
 </blockquote>
-<p>$$<br>ReLU(x)=max(0,x)<br>$$</p>
-<p>$$<br>\begin{equation}<br>ReLU(x)=<br>\begin{cases}x&amp; x\ge0\<br>0&amp; x&lt;0<br>\end{cases}<br>\end{equation}<br>$$</p>
-<p><img src="https://i.imgur.com/1lU9PNR.png" alt="relu"></p>
-<p><strong>ReLU</strong>的导数:<br>$$<br>\begin{equation}<br>\frac{d}{dx}ReLU(x)=<br>\begin{cases}1&amp; x &gt;0\<br>0&amp; x&lt;0\<br>undefined&amp;x=0<br>\end{cases}<br>\end{equation}<br>$$</p>
-<p>与前两个激活函数相比，<strong>ReLU</strong>的梯度在$x\ge0$时为$1$，反之为$0$，对$x\ge0$部分完全消除了之前的梯度饱和效应。计算复杂度上，<strong>ReLU</strong>函数也相比之前的两种指数函数简单，实验中还发现其有助于随机梯度下降方法收敛。<strong>ReLU</strong>函数已是目前深层卷积神经网络中最为常用的激活函数。</p>
+<script type="math/tex; mode=display">
+ReLU(x)=max(0,x)</script><script type="math/tex; mode=display">
+\begin{equation}
+ReLU(x)=
+\begin{cases}x& x\ge0\\
+0& x<0
+\end{cases}
+\end{equation}</script><p><img src="https://i.imgur.com/1lU9PNR.png" alt="relu"></p>
+<p><strong>ReLU</strong>的导数:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\frac{d}{dx}ReLU(x)=
+\begin{cases}1& x >0\\
+0& x<0\\
+undefined&x=0
+\end{cases}
+\end{equation}</script><p>与前两个激活函数相比，<strong>ReLU</strong>的梯度在$x\ge0$时为$1$，反之为$0$，对$x\ge0$部分完全消除了之前的梯度饱和效应。计算复杂度上，<strong>ReLU</strong>函数也相比之前的两种指数函数简单，实验中还发现其有助于随机梯度下降方法收敛。<strong>ReLU</strong>函数已是目前深层卷积神经网络中最为常用的激活函数。</p>
 
         
     
