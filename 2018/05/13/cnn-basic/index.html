@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            卷积神经网络 | 
+        
+        Cao
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="The road towards Deep Learning">
+    <meta name="keywords" content=",CNN 卷积神经网络">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body {
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text {
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Cao">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/05/13/cnn-basic/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Cao">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com/2018/05/13/cnn-basic/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="卷积神经网络 | Cao">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="The road towards Deep Learning">
+    <meta property="og:article:tag" content="CNN 卷积神经网络"> 
+
+    
+        <meta property="article:published_time" content="Sun May 13 2018 12:41:30 GMT+0800">
+        <meta property="article:modified_time" content="Mon May 14 2018 21:49:29 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yoursite.com/2018/05/13/cnn-basic/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2018/05/13/cnn-basic/index.html",
+    "headline": "卷积神经网络",
+    "datePublished": "Sun May 13 2018 12:41:30 GMT+0800",
+    "dateModified": "Mon May 14 2018 21:49:29 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "HandsomeCao",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/kid.jpg"
+        },
+        "description": "The road towards deep learning"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Cao",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",CNN 卷积神经网络",
+    "description": "The road towards Deep Learning",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#卷积"><span class="post-toc-number">1.</span> <span class="post-toc-text">卷积</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#池化"><span class="post-toc-number">2.</span> <span class="post-toc-text">池化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LeNet-5"><span class="post-toc-number">3.</span> <span class="post-toc-text">LeNet-5</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AlexNet"><span class="post-toc-number">4.</span> <span class="post-toc-text">AlexNet</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#VGG"><span class="post-toc-number">5.</span> <span class="post-toc-text">VGG</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ResNets"><span class="post-toc-number">6.</span> <span class="post-toc-text">ResNets</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#GoogLeNet"><span class="post-toc-number">7.</span> <span class="post-toc-text">GoogLeNet</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                卷积神经网络
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/kid.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>HandsomeCao</strong>
+        <span>5月 13, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/CNN-卷积神经网络/">CNN 卷积神经网络</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=卷积神经网络&url=http://yoursite.com/2018/05/13/cnn-basic/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/05/13/cnn-basic/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h3 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h3><blockquote>
+<p> <strong>卷积层</strong>是卷积神经网络(<em>Convolutional Neural Network</em>)中的基本操作。其使用一个<strong>卷积核</strong>通过对输入层进行卷积操作，从而可以提取到图像中的高层信息。</p>
+</blockquote>
+<p>假设输入图像是下图中的一个$6*6$的矩阵,其中每个格代表了图像点的像素值。</p>
+<p><img src="https://i.imgur.com/In87wix.png" alt=""></p>
+<p>设置其卷积核（<em>kernel</em>）为$3*3$的矩阵，卷积核中的参数不同，可导致其卷积得到的结果不同:</p>
+<p><img src="https://i.imgur.com/Dn0HGFv.png" alt=""></p>
+<p>同时，假定卷积操作每做一次卷积，卷积核移动一个像素位置，即卷积的<strong>步长</strong>(<em>stride</em>)为1。第一次卷积操作从图像$(0,0)$像素开始，由卷积核中的参数与对应位置图像像素<strong>逐位相乘后累加</strong>作为一次卷积结果。</p>
+<p><img src="https://i.imgur.com/OyxUEt2.png" alt=""></p>
+<p>对于<strong>卷积核1</strong>(<em>filter1</em>)，其对于$(0,0)​$位置进行卷积操作:</p>
+<script type="math/tex; mode=display">
+Conv_{out}=\sum{a_{i}b_{i}=}1*1+0*(-1)+0*(-1)+0*(-1)+1*1+0*(-1)+0*(-1)+1*1=3</script><p>当步长为$1$时，卷积核按照补偿大小在输入图像<strong>从左到右从上到下</strong>依次将卷积操作进行下去，最终输出一个$4<em>4$大小的<em>*卷积特征</em></em>，同时这卷积特征将作为下一层操作的输入。</p>
+<p><img src="https://i.imgur.com/NdLlBtZ.png" alt=""></p>
+<p>与之类似，若三维情形下的卷积层$l$的输入张量为$x^{l}\in R^{H^{l}\times W^{l} \times D^{l}}$,该层的卷积核为$f^{l}\in R^{H^{l}\times W^{l} \times D^{l}}$。三维输入时，卷积操作实际上只是将二维卷积扩展到了相应位置的所有通道上，最终将一次卷积处理的所有$HWD^{l}$个元素求和作为该位置的卷积结果。</p>
+<p>若进一步，类似$f^{l}$这样的卷积核有$D$个，则在同一个位置可得到$1 \times 1 \times 1 \times D$维度的卷积输出，而$D$即为第$l+1$层特征$x^{l+1}$的通道数$D^{l+1}$。对于三维图像，形式化的卷积操作为:</p>
+<script type="math/tex; mode=display">
+y_{i^{l+1},j^{l+1},d}=\sum_{i=0}^{H}\sum_{j=0}^{W}\sum_{d^{l}=0}^{D^{l}}f_{i,j,d^{l},d} \times x_{i^{l+1}+i, j^{l+1}+j,d^{l}}^{l}</script><p>其中$(i^{l+1},j^{l+1})$为卷积结果的位置坐标，在卷积层中，$f$可视作学习到的网络中的权重(<em>weight</em>)，可以发现该项权重对不同位置的所有输入都是相同的，也就是一个卷积核时作用于不同的区域的，这也就是卷积神经网络中的<strong>权值共享</strong>特性，当然除此之外，也可以为卷积操作设定其神经元中的<strong>偏置项</strong>，当然也可将其设置为0。</p>
+<p><strong>零填充</strong>：</p>
+<hr>
+<p>可见，对于上面介绍的卷积操作，对于一张输入图像，进行不断的卷积操作，得到的输出特征尺寸将在不断<strong>减小</strong>，有时这样是不可取的，因为最终的输出逐渐减小后，所学到的图像特征也所剩无几了。所以这里有个保证图像输出不再减小的方法，称为<strong>零填充<em>(Zero padding)</em></strong>。</p>
+<p><img src="https://i.imgur.com/7ccpHke.png" alt=""></p>
+<p>如上图所示，即是在卷积操作中设置$padding=1$，也就是在边缘像素周围再以1个0填充。对于本来的输入为$6 \times6$大小的图像，以卷积核为$3 \times 3$，步长为$1$进行卷积，会得到$4 \times 4$大小的输出图像。但当<strong>加上零填充</strong>之后，输入图像也就可看作是$8 \times 8$大小，进行同样的卷积操作，输出却得到了$6 \times 6$大小的图像，和输入保持不变，这样也就能<strong>增加网络中的卷积操作，学到更为高层的特征</strong>。</p>
+<p>所以在卷积操作中有三个重要的<strong>超参数</strong>(<em>Hyper parameters</em>)：</p>
+<ul>
+<li><strong>卷积核大小(<em>filter size</em>)</strong>: $(f \times f)$</li>
+<li><strong>卷积步长(<em>filter stride</em>)</strong>：$s$</li>
+<li><strong>零填充(<em>padding</em>)</strong>: $p$</li>
+</ul>
+<p>对于输入图像大小为$n \times n$，对于<strong>输出尺寸</strong>可以得到如下的一般公式:</p>
+<script type="math/tex; mode=display">
+\lfloor\frac{n+2p-f}{s}+1\rfloor \times \lfloor\frac{n+2p-f}{s}+1\rfloor</script><p>当然，合适的超参数设置会对模型带来意想不到的效果提升。在<strong>pytorch</strong>中，对于二维图像的卷积操作，使用<code>nn.Conv2d</code>表示。</p>
+<h3 id="池化"><a href="#池化" class="headerlink" title="池化"></a>池化</h3><blockquote>
+<p>在卷积神经网络中，池化层往往在卷积层的后面，通过池化来<strong>降低</strong>卷积层输出的特征向量，同时改善结果，防止过拟合。</p>
+</blockquote>
+<p>池化通常用的两种方法为：<strong>最大值池化</strong>(Max-Pooling)和<strong>平均值池化</strong>(Average-Pooling)。</p>
+<ul>
+<li><strong>最大值池化</strong>：</li>
+</ul>
+<script type="math/tex; mode=display">
+y_{i^{l+1},j^{l+1},d}=max(x_{i^{l+1} \times H+I, j^{l+1} \times W+j,d^{l}}^{l})</script><ul>
+<li><strong>平均值池化</strong>:</li>
+</ul>
+<script type="math/tex; mode=display">
+y_{i^{l+1},j^{l+1},d}=\frac{1}{HW}\sum x_{i^{l+1} \times H+I, j^{l+1} \times W+j,d^{l}}^{l}</script><p>对于卷积后得到的图像特征，<em>Max-Pooling</em>可形象表示为:</p>
+<p><img src="https://i.imgur.com/yyCG6On.png" alt=""></p>
+<p>这里池化的核大小选择为$(2 \times 2)$，也就是对于第一个块中，选择最大值7得到输出值。当然，如果是平均值池化，也就是取四个数的平均值作为其池化后的值。</p>
+<p>可以发现，池化操作后的结果相比其输入减小了，其实际上是一种<strong>降采样(<em>down-sampling</em>)</strong>，池化层的引入是按照人的视觉系统对视觉输入对象进行降采样和抽象，其主要作用主要有以下三项：</p>
+<ol>
+<li><strong>特征不变性</strong>：池化操作使模型更关注是否存在某些特征而不是特征具体的位置。可看作是一种很强的先验，使特征学习包含某种程度自由度，能容忍一些特征微小的位移。</li>
+<li><strong>特征降维</strong>：由于池化操作的降采样作用，汇合结果中的一个元素对应于原输入数据的一个子区域，因此池化相当于在空间范围内做了维度约减，从而使模型可以抽取更广范围的特征。同时减小了下一层输入大小，进而减小计算量和参数个数。</li>
+<li>在一定程度上<strong>防止过拟合</strong>，方便优化。</li>
+</ol>
+<h3 id="LeNet-5"><a href="#LeNet-5" class="headerlink" title="LeNet-5"></a>LeNet-5</h3><p><img src="https://i.imgur.com/vh9DPQ7.png" alt=""></p>
+<blockquote>
+<p> LeNet-5可以说是最早的卷积神经网络结构了，它主要用于手写数字识别的任务上，其发表于1998年的<a href="http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf" target="_blank" rel="noopener">论文</a></p>
+</blockquote>
+<p><strong>结构</strong>：LeNet-5不包括输入层一共有7个层，每一层都包含了可以训练的参数，输入为一张$32 \times 32$的图像。</p>
+<ol>
+<li><strong>C1卷积层</strong></li>
+</ol>
+<p>这一层的输入就是原始的图像，输入层接受图片的输入大小为$32 \times32 \times1$。卷积层的核（过滤器）尺寸为$5\times5$，深度为$6$，不使用$0$进行填充，步长为$1$。通过计算公式可以求出输出的尺寸为$28\times28\times6$，卷积层的深度决定了输出尺寸的深度。卷积层总共的参数有$5<em>5</em>1<em>6+6 =156$个参数，加的$6$为卷积后的偏置项参数。本层所拥有的节点有$28</em>28<em>6=4704$个节点， 而本层的每一个节点都是经过一个$5\times5$的卷积和一个偏置项计算所得到的，$5</em>5+1=26$，所以本层卷积层一共有$4704*26 = 122304$个连接。</p>
+<ol>
+<li><strong>S2池化层</strong></li>
+</ol>
+<p>本层的输入是C1的输出，它接收一个$28\times28\times6$大小的矩阵。在卷积神经网络中，常有的池化方法为最大池化和平均池化，由于使用的核为$2\times2$，步长也为$2$，意味着每四个相邻元素经过S2之后会得到一个输出，所以输出矩阵大小变为$14\times14\times6$大小。</p>
+<ol>
+<li><strong>C3卷积层</strong></li>
+</ol>
+<p>本层卷积操作，采用的卷积核仍为$5\times5$，使用$16$个卷积核，也就是深度为$16$，同样不使用零填充，步长为$1$，所以得到输出大小为$10\times10\times16$。</p>
+<ol>
+<li><strong>S4池化层</strong></li>
+</ol>
+<p>本层采用同S2相同的池化操作，使输出值再缩小一半量级，变为$5\times5\times16$。</p>
+<ol>
+<li><strong>C5卷积层</strong></li>
+</ol>
+<p>C5层由$120$个卷积核组成，一个卷积与<strong>S4</strong>中每一个<em>feature map</em>（$5<em>5</em>16$）相连，所以每一个C5的卷积核都会输出一个$1<em>1$的矩阵，所以在S4与C5之间是可看作属于全连接。C5是一个卷积层而不是一个全连接层，如果这个LeNet5的输入变的更大了而其它的保持不变，那么这个输出将要大于$1</em>1$。</p>
+<ol>
+<li><strong>F6全连接层</strong></li>
+</ol>
+<p>F6层包含了$84$个结点，计算输入向量和权重向量之间的点积，再加上一个偏置，结果通过<strong>sigmoid</strong>函数，来产生一个输出，也就是之前的输入为$120$个神经元，现在通过一层全连接，其中含$84$个神经元，来将输出降维。 </p>
+<ol>
+<li><strong>输出层</strong></li>
+</ol>
+<p>输出层是由<strong>欧式径向基函数（RBF）</strong>组成。每一个输出对应一个RBF函数，每一个RBF函数都有$84$维的输入向量.。每一个RBF函数都会有一个输出，最后输出层会输出一个10维的向量。，以映射到10个数字分别的预测的准确度。</p>
+<p><strong>MNIST数据集</strong></p>
+<p>MNIST数据集是入门的第一个数据集，其数据都为$28\times28$大小的<strong>单通道</strong>图像，它含有$60000$张训练图片，和$10000$张验证图片。其形式非常简单，图像如下图</p>
+<p><img src="http://wiki.jikexueyuan.com/project/tensorflow-zh/images/mnist_digits.png" alt=""></p>
+<p>用<strong>LeNet-5</strong>对MNIST数据集进行训练，可以取得<strong>92%</strong>左右的效果，已比传统机器学习方法实现的效果更好。</p>
+<p><img src="http://yann.lecun.com/exdb/lenet/gifs/a35.gif" alt=""></p>
+<p>通过pytorch实现的LeNet结构</p>
+<pre><code class="lang-python">class LeNet(nn.Module):
+    def __init__(self):
+        super(LeNet, self).__init__()
+        self.conv1 = nn.Conv2d(1, 6, kernel_size=5, padding=2)
+        self.conv2 = nn.Conv2d(6, 16, 5)
+        # self.conv3 = nn.Conv2d(16, 120, 5)
+        self.fc1 = nn.Linear(16*5*5, 120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, 10)
+
+    def forward(self, x):
+        out = F.relu(self.conv1(x))  # 28*28*6
+        out = F.max_pool2d(out, 2)  # 14*14*6
+        out = F.relu(self.conv2(out))  # 10 *10 *16
+        out = F.max_pool2d(out, 2)  # 5*5*16
+        out = out.view(out.size(0), -1)
+        out = F.relu(self.fc1(out))
+        out = F.relu(self.fc2(out))
+        out = self.fc3(out)
+        return out
+</code></pre>
+<h3 id="AlexNet"><a href="#AlexNet" class="headerlink" title="AlexNet"></a>AlexNet</h3><blockquote>
+<p>在LeNet-5之后，卷积神经网络由于硬件，数据等元素的局限，训练较为困难，所以发展一直都是不温不火，直到<strong>AlexNet</strong>在2012年<strong>ImageNet</strong>竞赛中以超越第二名10.9个百分点的优异成绩一举夺冠，从而打响了卷积神经网络、乃至深度学习在计算机视觉领域中研究热潮的“第一枪”。</p>
+</blockquote>
+<p><strong>结构</strong>：</p>
+<p><img src="https://i.imgur.com/et352X8.png" alt=""></p>
+<p>在AlexNet的网络结构中，共含五层卷积层和三层全连接层。AlexNet的上下两支是为了方便同时使用两片GPU进行训练，不过在第三层卷积和全连接层处上下两支信息可交互。由于两支网络完全一致，只需对其中一支进行分析。</p>
+<ol>
+<li><strong>卷积层C1</strong>：输入图像为$3\times224\times224$大小，实际是$3\times227\times227$大小，卷积核为$11<em>11$，不使用零填充，步长为$4$，总共使用$96$个卷积核，由公式可得$\lfloor\frac{227-11}{4}+1\rfloor=55$，即由卷积得到$96\times55\times55$大小的特征图。采用$3</em>3$尺度，步长为$2$去池化，则池化后的图像尺寸为$27$，所以像素规模为$96\times27\times27$，由于采用两个GPU，则分为两组，每组大小为$48\times27\times27$。</li>
+<li><strong>卷积层C2</strong>: 对于上一层的输出，采用$256$个$3*3$大小的卷积核，使用$1$个padding，步长为$1$，对其进行卷积得到$256\times26\times26$的特征图，对其同样采用最大池化，上下两层分别得到$128\times13\times13$大小的输出特征图。</li>
+<li><strong>卷积层C3</strong>：此层采用$384$个$3*3$大小的卷积核，同样使用$1$个零填充，上下两层分别得到$192\times13\times13$大小的输出图。</li>
+<li><strong>卷积层C4</strong>: 同上一层，此层采用$384$个$3*3$大小的卷积核，同样使用$1$个零填充，上下两层分别得到$192 \times13\times13$大小的输出图。</li>
+<li><strong>卷积层C5</strong>：此层采用$256$个$3*3$大小的卷积核，同样使用$1$个零填充，上下两层分别得到$128\times12\times12 $大小的输出图。再采用最大池化，降维到$128\times 6 \times 6$大小。</li>
+<li><strong>全连接层</strong> ： 之后共采用了三层全连接结构，对于其中一个GPU, 特征大小逐渐从$128<em>6</em>6$到$2048$，再从$2048$到$2048$，最后将两个GPU合并，也就是将特征从$4096$映射到$1000$，也就是ImageNet中类别的数量。</li>
+</ol>
+<p><strong>贡献</strong>:</p>
+<ul>
+<li><strong>AlexNet</strong>  首次将卷积神经网络应用于计算机视觉领域的海量图像数据集<strong>ImageNet</strong>， 揭示了卷积神经网络拥有强大的学习能力和表达能力。另一方面海量的数据也能防止神经网络过拟合。自此引发深度学习井喷式增长。</li>
+<li>利用<strong>GPU</strong>实现网络训练，之前由于计算资源的发展受限，阻碍了神经网络的研究进程。如今，利用GPU已大大减少了大型网络模型开发的成本和时间。</li>
+<li>一些训练技巧为之后研究打下了基础。<strong>ReLU激活函数</strong>，<strong>局部响应规范化</strong>(LRN)操作(如今已不常用)，随机失活(<strong>Dropout</strong>: 随机再网络中去除一些连接)，这些训练技巧不仅保证了模型的性能，也为之后深度卷积神经网络构建提供了范本。</li>
+</ul>
+<p><strong>代码实现</strong>:</p>
+<pre><code class="lang-python">class AlexNet(nn.Module):
+
+    def __init__(self, num_classes=1000):
+        super(AlexNet, self).__init__()
+        self.features = nn.Sequential(
+            nn.Conv2d(3, 96, kernel_size=11, stride=4, padding=0),
+            nn.ReLU(inplace=True),
+            LRN(local_size=5, alpha=0.0001, beta=0.75),
+            nn.MaxPool2d(kernel_size=3, stride=2),
+            nn.Conv2d(96, 256, kernel_size=5, padding=2, groups=2),
+            nn.ReLU(inplace=True),
+            LRN(local_size=5, alpha=0.0001, beta=0.75),
+            nn.MaxPool2d(kernel_size=3, stride=2),
+            nn.Conv2d(256, 384, kernel_size=3, padding=1),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(384, 384, kernel_size=3, padding=1, groups=2),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(384, 256, kernel_size=3, padding=1, groups=2),
+            nn.ReLU(inplace=True),
+            nn.MaxPool2d(kernel_size=3, stride=2),
+        )
+        self.classifier = nn.Sequential(
+            nn.Linear(256 * 6 * 6, 4096),
+            nn.ReLU(inplace=True),
+            nn.Dropout(),
+            nn.Linear(4096, 4096),
+            nn.ReLU(inplace=True),
+            nn.Dropout(),
+            nn.Linear(4096, num_classes),
+        )
+
+    def forward(self, x):
+        x = self.features(x)
+        x = x.view(x.size(0), 256 * 6 * 6)
+        x = self.classifier(x)
+        return x
+</code></pre>
+<h3 id="VGG"><a href="#VGG" class="headerlink" title="VGG"></a>VGG</h3><p>VGG网络有类似Alex的形式，但它在一些地方也有不同。</p>
+<ul>
+<li>VGG-Net中普遍使用了小卷积核，AlexNet多采用的大于5的卷积核，而VGG的卷积核多为$3*3$</li>
+<li>网络卷积层的通道数从$3\to64\to128\to256\to512$。通道数逐渐变得很大，学到的特征多。</li>
+<li>VGG中的卷积很多都保持了输入大小，也就是卷积后大小保持不变，为的是在增加网络深度时确保各层输入大小随深度增加而不极具减小。</li>
+</ul>
+<p><strong>结构</strong></p>
+<p><img src="https://i.imgur.com/t4U5sHK.png" alt=""></p>
+<p><img src="https://i.imgur.com/rQwN1Zn.png" alt=""></p>
+<h3 id="ResNets"><a href="#ResNets" class="headerlink" title="ResNets"></a>ResNets</h3><blockquote>
+<p> 理论和实验表明，神经网络的<strong>深度</strong>和<strong>宽度</strong>是表征网络复杂度的两个核心因素，不过深度相比宽度在增加网络复杂性上更加有效，然而随着深度的增加，训练会变得愈加困难。这主要是因为在基于<strong>随机梯度下降</strong>的网络训练过程中，误差的多层反向传播会导致<strong>梯度弥散</strong>或<strong>梯度爆炸</strong>。可能随着网络的训练，误差并未减少而却增加。<strong>残差网络</strong>(ResNets)便很好地解决了这一问题。</p>
+</blockquote>
+<p><strong>残差块</strong></p>
+<p><img src="https://i.imgur.com/qxiUrhA.png" alt=""></p>
+<p>残差网络主要受<strong>高速网络</strong>的影响，假设某卷积神经网络有$L$层，其中第$i$层的输入为$x^{i}$，参数为$w^{i}$，该层的输出为$y^{i}=x^{i+1}$，忽略偏置，则之间关系表示为:</p>
+<script type="math/tex; mode=display">
+y=F(x,w)</script><p>其中，$F$为非线性激活函数，而对于高速网络来言，$y$的计算定义如下:</p>
+<script type="math/tex; mode=display">
+y=F(x,w)*(T(x,w)+x*C(x,w)</script><p>其中$T,C$是两个非线性变换,分别称作“<strong>变换门</strong>”和“<strong>携带门</strong>”。变换门负责控制变换的强度，携带门则控制原输入信号的保留强度，由于增加了<strong>保留原输入数据的可能性</strong>，所以这种网络会更加灵活。而残差网络可以看作其的特殊情况：本来优化目标为:</p>
+<script type="math/tex; mode=display">
+y=F(x,w)+x</script><p>简单变形为</p>
+<script type="math/tex; mode=display">
+F(x,w)=y-x</script><p>也就是说，网络所要学习的就是<strong>残差项</strong>$y-x$。残差块有两个学习分支，其一是左侧的残差函数，其二为右侧对输入的恒等映射。这两个分支经过简单的整合，再经过一个非线性变换<strong>ReLU</strong>，从而形成网络的残差块。由多个残差块堆积而成了<strong>残差网络</strong>。</p>
+<p><img src="https://img-blog.csdn.net/20161028170505110" alt=""></p>
+<ul>
+<li>利用pytorch构建残差块</li>
+</ul>
+<pre><code class="lang-python"># Residual block
+class ResidualBlock(nn.Module):
+    def __init__(self, in_channels, out_channels, stride=1, downsample=None):
+        super(ResidualBlock, self).__init__()
+        self.conv1 = conv3x3(in_channels, out_channels, stride)
+        self.bn1 = nn.BatchNorm2d(out_channels)
+        self.relu = nn.ReLU(inplace=True)
+        self.conv2 = conv3x3(out_channels, out_channels)
+        self.bn2 = nn.BatchNorm2d(out_channels)
+        self.downsample = downsample
+
+    def forward(self, x):
+        residual = x
+        out = self.conv1(x)
+        out = self.bn1(out)
+        out = self.relu(out)
+        out = self.conv2(out)
+        out = self.bn2(out)
+        if self.downsample:
+            residual = self.downsample(x)
+        out += residual # 加上残差项
+        out = self.relu(out)
+        return out
+</code></pre>
+<h3 id="GoogLeNet"><a href="#GoogLeNet" class="headerlink" title="GoogLeNet"></a>GoogLeNet</h3><blockquote>
+<p>由于增加网络的深度和宽度会导致训练难以进行下去，<strong>Inception</strong>主要思路是用<strong>密集成分来近似最优的局部稀疏结构</strong>去加深网络的同时，增<strong>宽</strong>网络结构。</p>
+</blockquote>
+<p><strong>Inception模块</strong></p>
+<p><img src="https://img-blog.csdn.net/20160225155351172" alt=""></p>
+<ul>
+<li>采用不同大小的卷积核，意味着得到不同大小的感受野，最后<strong>拼接</strong>起来意味着不同尺度的融合。</li>
+<li>之所以卷积核采用1，3，5，主要为了方便对齐。设定步长$stide=1$之后，只要设定相应的$padding$为0， 1， 2，那么卷积之后即可得到相同维度的特征，那么这些特征即可拼接再一起。</li>
+<li>在一个方向上先采用了最大化池化，这样能得到更好的效果。</li>
+<li>采用了$1*1$卷积</li>
+<li>网络越到后面，特征越抽象，而且每个特征涉及的感受野也更大了，因此随着层数的增加，$3<em>3$和$5</em>5$卷积的比例也要增加。</li>
+</ul>
+<p>由多个<strong>Inception</strong>模块构建成了<strong>GoogLeNet</strong></p>
+<p><img src="https://img-blog.csdn.net/20160225155403967" alt=""></p>
+<p>在Inception-v1之后为了提高训练速度和效果出现了许多衍生版本，但思想都不变，理解了Inception模块，就嫩理解Inception网络。</p>
+<p>Inception模块的pytorch实现</p>
+<pre><code class="lang-python">class Inception_base(nn.Module):
+    def __init__(self, depth_dim, input_size, config):
+        super(Inception_base, self).__init__()
+
+        self.depth_dim = depth_dim
+
+        #mixed &#39;name&#39;_1x1
+        self.conv1 = nn.Conv2d(input_size, out_channels=config[0][0], kernel_size=1, stride=1, padding=0)
+
+        #mixed &#39;name&#39;_3x3_bottleneck
+        self.conv3_1 = nn.Conv2d(input_size, out_channels=config[1][0], kernel_size=1, stride=1, padding=0)
+        #mixed &#39;name&#39;_3x3
+        self.conv3_3 = nn.Conv2d(config[1][0], config[1][1], kernel_size=3, stride=1, padding=1)
+
+        # mixed &#39;name&#39;_5x5_bottleneck
+        self.conv5_1 = nn.Conv2d(input_size, out_channels=config[2][0], kernel_size=1, stride=1, padding=0)
+        # mixed &#39;name&#39;_5x5
+        self.conv5_5 = nn.Conv2d(config[2][0], config[2][1], kernel_size=5, stride=1, padding=2)
+
+        self.max_pool_1 = nn.MaxPool2d(kernel_size=config[3][0], stride=1, padding=1)
+        #mixed &#39;name&#39;_pool_reduce
+        self.conv_max_1 = nn.Conv2d(input_size, out_channels=config[3][1], kernel_size=1, stride=1, padding=0)
+
+        self.apply(helpers.modules.layer_init)
+
+    def forward(self, input):
+
+        output1 = F.relu(self.conv1(input))
+
+        output2 = F.relu(self.conv3_1(input))
+        output2 = F.relu(self.conv3_3(output2))
+
+        output3 = F.relu(self.conv5_1(input))
+        output3 = F.relu(self.conv5_5(output3))
+
+        output4 = F.relu(self.conv_max_1(self.max_pool_1(input)))
+
+        return torch.cat([output1, output2, output3, output4], dim=self.depth_dim)
+</code></pre>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/05/13/docker/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/05/12/nn-basic/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/kid.jpg" alt="HandsomeCao's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        handsomecao@163.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto: handsomecao@163.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">4</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/HandsomeCao" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Cao
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+    <script src="https://cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+<!-- Bing Background -->
+
+<script type="text/ls-javascript" id="Bing-Background-script">
+    queue.offer(function(){
+        $('body').attr('data-original', 'https://api.i-meto.com/bing?');
+    });
+</script>
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
