@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title>mAP</title>
+      <link href="/2018/05/27/mAP/"/>
+      <url>/2018/05/27/mAP/</url>
+      <content type="html"><![CDATA[<h2 id="mAP-目标检测模型中的性能评估"><a href="#mAP-目标检测模型中的性能评估" class="headerlink" title="mAP - 目标检测模型中的性能评估"></a>mAP - 目标检测模型中的性能评估</h2><blockquote><p><strong>目标检测</strong>问题是指：给定一个图像，找到其中的目标，找到它们的位置，并且对目标进行分类。目标检测模型通常是在一组固定的类上进行训练的，所以模型只能定位和分类图像中的那些类。此外，目标的位置通常是边界矩阵的形式。所以，目标检测需要涉及图像中目标的位置信息和对目标进行分类。 均值平均精度(<em>Mean Average Precision</em>)对于评估模型定位性能、目标检测性能和分割模型性能都是很有用的。</p></blockquote><h3 id="精确率和召回率"><a href="#精确率和召回率" class="headerlink" title="精确率和召回率"></a>精确率和召回率</h3><p>要理解精确率(<em>presicion</em>)和召回率(<em>recall</em>)首先要理解以下概念：</p><ul><li>TP ——- 将正类预测为正类数</li><li>FN ——- 将正类预测为负类数</li><li>FP ——— 将负类预测为正类数</li><li>TN ——- 将负类预测为负类数</li></ul><p>举个例子:</p><blockquote><p>假设我们手上有60个正样本，40个负样本，我们要找出所有的正样本，系统查找出50个，其中只有40个是真正的正样本，计算上述各指标 ：</p></blockquote><ul><li><strong>TP = 40</strong>    (检测出的40个为正)</li><li><strong>FN = 20</strong>   (有60个正，只检测出40个为正，所以60-40=20)</li><li><strong>FP = 10</strong>   (找出了50个，但只有40为正，50-40=10)</li><li><strong>TN = 30</strong>  (找出中的50个，只有40个为正，也即其中10个为负，所以40-10=30)</li></ul><p>而<strong>精确率</strong>是针对<strong>预测结果</strong>而言的，它表示的是预测为正的样本中有多少是真正的正样本。那么预测为正就有两种可能了，一种就是把正类预测为正类<strong>(TP)</strong>，另一种就是把负类预测为正类(<strong>FP</strong>)，也就是 </p><script type="math/tex; mode=display">P = \frac{TP}{TP+FP}</script><p>而<strong>召回率</strong>是针对我们原来的<strong>样本</strong>而言的，它表示的是样本中的正例有多少被预测正确了。那也有两种可能，一种是把原来的正类预测成正类<strong>(TP)</strong>，另一种就是把原来的正类预测为负类(<strong>FN)</strong>:</p><script type="math/tex; mode=display">R = \frac{TP}{TP+FN}</script><blockquote><p>简单来说，<strong>精确率</strong>是指对于<strong>检测出的</strong>样本中，为正的样本所占比例。而<strong>召回率</strong>是指<strong>本来的为正的样本</strong>中，检测出的正样本所占的比例。</p></blockquote><p>所以：</p><p><strong>精确率</strong>(<em>precision</em>) = $ TP/(TP+FP) = 4/5$</p><p><strong>召回率</strong>(recall) = $ TP/(TP+FN) = 2/3 $ </p><p>额外：</p><p><strong>准确率</strong>(<em>accuracy</em>) = 预测对的/所有 = $(TP+TN)/(TP+FN+FP+TN) = \frac{7}{10} $</p><p><img src="http://s9.sinaimg.cn/mw690/002T2ChPgy6XQdjij4Ae8" alt=""></p><h3 id="IoU"><a href="#IoU" class="headerlink" title="IoU"></a>IoU</h3><blockquote><p> <strong>loU(交并比)</strong>是模型所预测的检测框和真实(<em>ground truth</em>)的检测框的<strong>交集和并集之间的比例</strong>。这个数据也被称为<em>Jaccard</em>指数。 </p></blockquote><p><img src="https://img-blog.csdn.net/20161121150037641" alt=""></p><p>对于图像中的GroundTruth框$A$，其检测出的矩形框为$B$，则其IoU(Intersection over Union)可以计算如下:</p><script type="math/tex; mode=display">IoU=\frac{A\cap B}{A \cup B}</script><h3 id="AP"><a href="#AP" class="headerlink" title="AP"></a>AP</h3><ul><li>对于PASCAL_VOC2007， 首先设定一组阈值，$[0, 0.1, 0.2, …, 1]$。然后对于$recall$大于每一个阈值（比如$recall&gt;0.3$），我们都会得到一个对应的最大$precision$。这样，我们就计算出了$11$个$precision$。通过对这11个散点做出PR图，<strong>AP</strong>即为这11个$precision$对于每个$recall$值所做的曲线下的<strong>面积</strong>。这种方法英文叫做$11-point interpolated average precision$。</li><li>当然<strong>PASCAL VOC CHALLENGE</strong>自2010年后就换了另一种计算方法。新的计算方法假设这$N$个样本中有$M$个正例，那么我们会得到M个$recall$值$（1/M, 2/M, …, M/M）$,对于每个$recall$值$r$，我们可以计算出对应$（r’ &gt; r）$的<strong>最大</strong>$precision$，然后对这$M$个$precision$值同样做出PR曲线，求此曲线下的面积。</li></ul><p>实际多类别分类任务中，我们通常不满足只通过top-5(<strong>top-#是指通过score排序得到的预测序列</strong>)来衡量一个模型的好坏，而是需要知道从top-1到top-N（N是所有测试样本个数）对应的precision和recall。显然随着我们选定的样本越来也多，recall一定会越来越高，而precision整体上会呈下降趋势。把recall当成横坐标，precision当成纵坐标，即可得到常用的precision-recall曲线。这个例子的precision-recall曲线如下： </p><p><img src="http://s10.sinaimg.cn/mw690/002T2ChPgy6XQddBz7ze9" alt=""></p><h3 id="mAP"><a href="#mAP" class="headerlink" title="mAP"></a>mAP</h3><ul><li>求出每个类别的AP，之后只需要对每个类别的AP相加求平均值，即得到mAP。</li></ul><p>具体可参考这篇<a href="http://blog.sina.com.cn/s/blog_9db078090102whzw.html" target="_blank" rel="noopener">博文</a></p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> 目标检测 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>docker使用</title>
       <link href="/2018/05/13/docker/"/>
       <url>/2018/05/13/docker/</url>
