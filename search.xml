@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title>K-近邻算法</title>
+      <link href="/2018/06/05/knn/"/>
+      <url>/2018/06/05/knn/</url>
+      <content type="html"><![CDATA[<h2 id="K-近邻算法-KNN"><a href="#K-近邻算法-KNN" class="headerlink" title="K-近邻算法(KNN)"></a>K-近邻算法(KNN)</h2><blockquote><p>k-近邻算法采用测量不同特征值之间的距离方法进行分类</p></blockquote><ul><li>监督学习方法，适用于分类</li><li>优点：精度高，对异常值不敏感，无数据输入假定。</li><li>缺点：计算复杂度高，空间复杂度高。</li><li>适用数据范围：数值型，标称型。</li></ul><h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>如果存在一个样本数据集合，也称作训练样本集，并且样本集中每个数据都存在<strong>标签</strong>，即我们知道样本集中每一数据与所属分类的对应关系。输入没有标签的新数据后，将新数据的每个特征与样本集中数据对应的特征进行比较，然后算法提取样本集中特征最相似数据<strong>（最近邻）</strong>的分类标签。一般来说，我们只选择样本数据集中前k个最相似的数据，这就是k-近邻算法中k的出处，通常k是<strong>不大于20</strong>的整数。最后，选择k个最相似数据中出现次数最多的分类，作为新数据的分类。</p><h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p>对未知类别属性的数据集中的每个点依次执行以下操作：</p><ol><li>计算已知类别数据集中的点与当前点之间的距离；</li><li>按照距离递增次序排序；</li><li>选取与当前点距离最小的k个点；</li><li>确定前k个点所在类别的出现频率；</li><li>返回前k个点出现频率最高的类别作为当前点的预测分类</li></ol><p>其中计算距离通常采用<strong>欧式距离公式</strong>：</p><script type="math/tex; mode=display">d=\sqrt{(xA_{0}-xB_{0})^{2}+(xA_{1}-xB_{1})^{2}}</script><h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><pre><code class="lang-python">import numpy as npimport operatordef CreateDataSet():    &quot;&quot;&quot;    Create some fake data    &quot;&quot;&quot;    group = np.array([[1.0,1.1],[1.0,1.0],[0,0],[0,0.1]])    labels = [&#39;A&#39;,&#39;A&#39;,&#39;B&#39;,&#39;B&#39;]    return group, labelsdef classify0(inX, dataSet, labels, k):    &quot;&quot;&quot;    KNN algorithm:    1. calculate the distance between every data from        sample with the target data.    2. sort these distances by ascending    3. get the top k data with smallest distance    4. confirm the frequnces of topk&#39;s class    5. return the highest frequncy of class      &quot;&quot;&quot;    dataSetSize = dataSet.shape[0]  # the amount of data    # calculate the distance between two points    diffMat = np.tile(inX, (dataSetSize, 1)) - dataSet    sqDiffMat = diffMat ** 2    sqDistances = sqDiffMat.sum(axis=1)    distances = sqDistances ** 0.5    sortedDistIndices = distances.argsort()    # choose the topk    classCount = {}    for i in range(k):        voteIlabel = labels[sortedDistIndices[i]]        classCount[voteIlabel] = classCount.get(voteIlabel, 0) + 1    sortedClassCount = sorted(classCount.items(),        key=operator.itemgetter(1), reverse=True)    return sortedClassCount[0][0]if __name__ == &#39;__main__&#39;:    group, labels = CreateDataSet()    output = classify0([0, 0], group, labels, 3)    print(output)</code></pre><p><a href="https://github.com/HandsomeCao/Machine-Learning-learn/tree/master/KNN" target="_blank" rel="noopener">代码</a></p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> 机器学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>mAP</title>
       <link href="/2018/05/27/mAP/"/>
       <url>/2018/05/27/mAP/</url>
