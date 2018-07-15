@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title>fpn</title>
+      <link href="/2018/07/14/fpn/"/>
+      <url>/2018/07/14/fpn/</url>
+      <content type="html"><![CDATA[<h2 id="FPN"><a href="#FPN" class="headerlink" title="FPN"></a>FPN</h2><blockquote><p>FPN是由facebook所提出，全称为Feature Pyramid Network—特征金字塔网络。FPN主要解决的是物体检测中的多尺度问题，通过简单的网络连接改变，在基本不改变原有模型计算量的情况下，大幅提高了小物体检测的性能。</p></blockquote><p>​       原来多数的目标检测算法都只是采用顶层特征做检测，但事实上低层的特征语义信息比较少，但是目标位置准确；高层的特征语义信息比较丰富，但是目标位置比较粗略。虽然有些算法采用多尺度特征融合的方式，但是一般是采用融合后的特征做检测，而FPN不一样的地方是在预测在不同特征层独立进行的。现在目标检测的方法有许多，常见的<em>Faster R-CNN</em>, <em>YOLO</em>, <em>SSD</em>,后两者在检测速度上大幅提高。但是检测效果一直是由Faster R-CNN主导，虽然速度较为慢，但精度很高，对大物体的检测效果已经非常显著。</p><p>​        但是在目标检测里面，在有限计算量的情况下，常用的网络结构对应的stride一般会比较大，图像中的小物体甚至会小于stride的大小，造成的结果就是小物体检测的性能。</p><p><img src="https://raw.githubusercontent.com/HandsomeCao/markdown-picture/master/20180714193425.png" alt=""></p><p>如上所示，传统解决这个问题的思路包括：</p><ol><li>多尺度训练和测试，又称图像金字塔，如图(a)所示，这种方法由于很高的时间和计算量开销，很难在实际中得到使用。</li><li><strong>特征分层。</strong>即每层分别预测对应的scale分辨率的检测结果，如图(c)所示。<strong>SSD</strong>框架采用了类似的思想，这样的方法在于强行让不同层去学习同样的语义信息。不同深度对应不同层次的语义特征，<strong>浅层网络分辨率高，学的更多是细节特征，深层网络分辨率低，学的更多的是语义特征。</strong></li></ol><p>所以目前的多尺度目标检测主要面对的挑战为：</p><ul><li>如何学习具有强语义信息的多尺度特征表示？</li><li>如何设计通用的特征表示来解决物体检测中的多个子问题？</li><li>如何高效计算多尺度的特征表示?</li></ul><p>如图(d)，网络直接在原来的单网络上做修改，每个分辨率的feature map引入后一分辨率缩放两倍的feature map做<strong>element-wise</strong>的操作。通过这样的连接，每一层预测所用的feature map都融合了不同分辨率、不同语义强度的特征，融合的不同分辨率的feature map分别做对应分辨率大小的物体检测。这样保证了每一层都有合适的分辨率以及强语义特征。同时，由于此方法只是在原网络基础上加上了额外的跨层连接，在实际应用中几乎不增加额外的时间和计算量。</p><p><img src="https://raw.githubusercontent.com/HandsomeCao/markdown-picture/master/20180714194713.png" alt=""></p><p>在Faster R-CNN中加入FPN，其分别是在<strong>RPN</strong>和<strong>Fast RCNN</strong>两步起作用。</p><p>主网络采用ResNet，算法结构大致为Figure 3，一个自底向上的线路，一个自顶向下的线路，横向连接。图中放大区域就是横向连接，$1\times1$大小的卷积核的作用是减少feature map的个数， 而并不改变其大小。自底向上为网络的前向传播过程，将feature map未改变大小的层归为一个<strong>stage</strong>， 每次抽取的特征都是每个stage的最后一层输出，这样能够构成金字塔。自顶向下的过程采用上采样完成，横向连接就是将上采用的结果和自底向上的生成的相同大小的feature map 相融合。</p><ul><li>在RPN中区别于原论文直接在最后的feature map上设置anchor，FPN在相应的feature map上设置，在每个scale都设置不同的anchor且设置类型变为$5\times3$种， FPN对比原来的RPN网络，召回率得到大幅度提升。</li><li>在Fast RCNN中， 首先需要固定FPN+RPN提取的proposal结果。在Fast RCNN中，FPN主要用于选择哪一层的feature map 来做ROI Pooling， FPN筛选ROI区域，同样对于检测小物体的精度有大幅提升。</li></ul><p>实验结果</p><p><img src="https://raw.githubusercontent.com/HandsomeCao/markdown-picture/master/20180715092613.png" alt=""></p><p><img src="https://raw.githubusercontent.com/HandsomeCao/markdown-picture/master/20180715092757.png" alt=""></p><p>FPN算法同时利用低层特征高分辨率和高层特征的高语义信息，通过融合这些不同层的特征达到预测效果。并且预测是在每个融合后的特征层上单独进行的，这和常规的特征融合方式不同。</p><p><a href="https://blog.csdn.net/u014380165/article/details/72890275/" target="_blank" rel="noopener">参考</a></p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> 目标检测 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>faster-rcnn</title>
       <link href="/2018/06/26/faster-rcnn/"/>
       <url>/2018/06/26/faster-rcnn/</url>
