@@ -3,6 +3,36 @@
   
     
     <entry>
+      <title>neo4j</title>
+      <link href="/2019/05/29/neo4j/"/>
+      <url>/2019/05/29/neo4j/</url>
+      <content type="html"><![CDATA[<h2 id="Neo4j学习"><a href="#Neo4j学习" class="headerlink" title="Neo4j学习"></a>Neo4j学习</h2><h3 id="创建结点"><a href="#创建结点" class="headerlink" title="创建结点"></a>创建结点</h3><pre><code class="lang-cypher">$ CREATE (   &lt;node-name&gt;:&lt;label-name&gt;   {           &lt;Property1-name&gt;:&lt;Property1-Value&gt;      ........      &lt;Propertyn-name&gt;:&lt;Propertyn-Value&gt;   })</code></pre><h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><pre><code class="lang-cypher">$ MATCH (&lt;node-name&gt;:&lt;label-name&gt;) RETURN &lt;node-name&gt;.att1, &lt;node-name&gt;.att2,.......</code></pre><h3 id="创建关系"><a href="#创建关系" class="headerlink" title="创建关系"></a>创建关系</h3><pre><code class="lang-cypher">$ CREATE (p1:Profile1)-[r1:LIKES]-&gt;(p2:Profile2)$ CREATE     (&lt;node1-label-name&gt;:&lt;node1-name&gt;)-   [&lt;relationship-label-name&gt;:&lt;relationship-name&gt;]-&gt;   (&lt;node1-label-name&gt;:&lt;node1-name&gt;)RETURN &lt;relationship-label-name&gt;</code></pre><h3 id="查询关系"><a href="#查询关系" class="headerlink" title="查询关系"></a>查询关系</h3><pre><code class="lang-cypher">$ MATCH (node1)-[r:rname]-&gt;(node2) RETURN r$ MATCH (&lt;node1-label-name&gt;)-[&lt;relationship-label-name&gt;:&lt;relationship-name&gt;]-&gt;(&lt;node2-label-name&gt;)RETURN &lt;relationship-label-name&gt;</code></pre><h3 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h3><pre><code class="lang-cypher">$ MATCH (node_name:node_label) WHERE node_name.att1 = &#39;xxxx&#39; OR/AND ... RETURN ...</code></pre>]]></content>
+      
+      
+        <tags>
+            
+            <tag> 知识图谱 neo4j </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>ElasticSearch</title>
+      <link href="/2019/05/29/ElasticSearch/"/>
+      <url>/2019/05/29/ElasticSearch/</url>
+      <content type="html"><![CDATA[<h2 id="ElasticSearch"><a href="#ElasticSearch" class="headerlink" title="ElasticSearch"></a>ElasticSearch</h2><h4 id="1-查询所有的索引"><a href="#1-查询所有的索引" class="headerlink" title="1. 查询所有的索引"></a>1. 查询所有的索引</h4><pre><code class="lang-bash">curl &#39;localhost:9200/_cat/indices?v&#39;</code></pre><h4 id="2-删除指定索引"><a href="#2-删除指定索引" class="headerlink" title="2.删除指定索引"></a>2.删除指定索引</h4><pre><code class="lang-bash">curl -XDELETE http://localhost:9200/&lt;indice_name&gt;</code></pre><h4 id="3-查询索引中所有内容"><a href="#3-查询索引中所有内容" class="headerlink" title="3.查询索引中所有内容"></a>3.查询索引中所有内容</h4><pre><code class="lang-python">res = es.search(index=&quot;120ask_qa&quot;, body={&quot;query&quot;: {&quot;match_all&quot;: {}}})print(&quot;Got %d Hits:&quot; % res[&#39;hits&#39;][&#39;total&#39;])</code></pre>]]></content>
+      
+      
+        <tags>
+            
+            <tag> 检索 elasticsearch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>维基中文百科获取</title>
       <link href="/2019/05/29/%E7%BB%B4%E5%9F%BA%E4%B8%AD%E6%96%87%E7%99%BE%E7%A7%91%E8%8E%B7%E5%8F%96/"/>
       <url>/2019/05/29/%E7%BB%B4%E5%9F%BA%E4%B8%AD%E6%96%87%E7%99%BE%E7%A7%91%E8%8E%B7%E5%8F%96/</url>
