@@ -244,7 +244,7 @@
 
     
         <meta property="article:published_time" content="Wed May 29 2019 17:05:18 GMT+0800">
-        <meta property="article:modified_time" content="Wed May 29 2019 17:06:32 GMT+0800">
+        <meta property="article:modified_time" content="Wed Jun 05 2019 21:36:59 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yoursite.com/2019/05/29/neo4j/index.html",
     "headline": "neo4j",
     "datePublished": "Wed May 29 2019 17:05:18 GMT+0800",
-    "dateModified": "Wed May 29 2019 17:06:32 GMT+0800",
+    "dateModified": "Wed Jun 05 2019 21:36:59 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "HandsomeCao",
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Neo4j学习"><span class="post-toc-number">1.</span> <span class="post-toc-text">Neo4j学习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建结点"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">创建结点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查询"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">查询</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建关系"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">创建关系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查询关系"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">查询关系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#条件查询"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">条件查询</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Neo4j学习"><span class="post-toc-number">1.</span> <span class="post-toc-text">Neo4j学习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CQL语句"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">CQL语句</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CQL函数"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">CQL函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建结点"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">创建结点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查询"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">查询</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建关系"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">创建关系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查询关系"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">查询关系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#条件查询"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">条件查询</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用py2neo操作neo4j数据库"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">使用py2neo操作neo4j数据库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装"><span class="post-toc-number">1.8.1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#节点与关系"><span class="post-toc-number">1.8.2.</span> <span class="post-toc-text">节点与关系</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Subgraph子图"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">Subgraph子图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Graph"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">Graph</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -483,7 +483,97 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="Neo4j学习"><a href="#Neo4j学习" class="headerlink" title="Neo4j学习"></a>Neo4j学习</h2><h3 id="创建结点"><a href="#创建结点" class="headerlink" title="创建结点"></a>创建结点</h3><pre><code class="lang-cypher">$ CREATE (
+        <h2 id="Neo4j学习"><a href="#Neo4j学习" class="headerlink" title="Neo4j学习"></a>Neo4j学习</h2><blockquote>
+<p>Neo4j是一个世界领先的开源图形数据库。 它是由Neo技术使用Java语言完全开发的。图形数据库是以图形结构的形式存储数据的数据库。 它以节点，关系和属性的形式存储应用程序的数据。 正如RDBMS以表的“行，列”的形式存储数据，GDBMS以“图形”的形式存储数据。</p>
+</blockquote>
+<p>图形数据库数据模型的主要构建块是：</p>
+<ul>
+<li>节点</li>
+<li>关系</li>
+<li>属性</li>
+</ul>
+<h3 id="CQL语句"><a href="#CQL语句" class="headerlink" title="CQL语句"></a>CQL语句</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>S.NO</th>
+<th>CQL命令/条</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.</td>
+<td>Create创建</td>
+<td>创建节点，关系和属性</td>
+</tr>
+<tr>
+<td>2.</td>
+<td>Match匹配</td>
+<td>检索有关节点，关系和属性数据</td>
+</tr>
+<tr>
+<td>3.</td>
+<td>RETURN返回</td>
+<td>返回查询结果</td>
+</tr>
+<tr>
+<td>4.</td>
+<td>WHERE哪里</td>
+<td>提供条件过滤检索数据</td>
+</tr>
+<tr>
+<td>5.</td>
+<td>DELETE删除</td>
+<td>删除节点和关系</td>
+</tr>
+<tr>
+<td>6.</td>
+<td>REMOVE移除</td>
+<td>删除节点和关系属性</td>
+</tr>
+<tr>
+<td>7.</td>
+<td>ORDER BY以..排序</td>
+<td>排序检索数据</td>
+</tr>
+<tr>
+<td>8.</td>
+<td>SET组</td>
+<td>添加或更新标签</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="CQL函数"><a href="#CQL函数" class="headerlink" title="CQL函数"></a>CQL函数</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>S.NO</th>
+<th>定制列表功能</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.</td>
+<td>String字符串</td>
+<td>它们用于使用String字面量</td>
+</tr>
+<tr>
+<td>2.</td>
+<td>Aggregation聚合</td>
+<td>它们用于对CQL查询结果执行一些聚合操作</td>
+</tr>
+<tr>
+<td>3.</td>
+<td>RelationShip关系</td>
+<td>它们用于获取关系的细节。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="创建结点"><a href="#创建结点" class="headerlink" title="创建结点"></a>创建结点</h3><pre><code class="lang-cypher">$ CREATE (
    &lt;node-name&gt;:&lt;label-name&gt;
    {     
       &lt;Property1-name&gt;:&lt;Property1-Value&gt;
@@ -491,6 +581,8 @@
       &lt;Propertyn-name&gt;:&lt;Propertyn-Value&gt;
    }
 )
+
+# $CREATE (emp:Employee{id:123, name:&quot;Smith&quot;, sal:35000, deptno:10})
 </code></pre>
 <h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><pre><code class="lang-cypher">$ MATCH (&lt;node-name&gt;:&lt;label-name&gt;) RETURN &lt;node-name&gt;.att1, &lt;node-name&gt;.att2,.......
 </code></pre>
@@ -508,6 +600,68 @@ RETURN &lt;relationship-label-name&gt;
 </code></pre>
 <h3 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h3><pre><code class="lang-cypher">$ MATCH (node_name:node_label) WHERE node_name.att1 = &#39;xxxx&#39; OR/AND ... RETURN ...
 </code></pre>
+<h3 id="使用py2neo操作neo4j数据库"><a href="#使用py2neo操作neo4j数据库" class="headerlink" title="使用py2neo操作neo4j数据库"></a>使用py2neo操作neo4j数据库</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code class="lang-bash">pip install py2neo
+</code></pre>
+<h4 id="节点与关系"><a href="#节点与关系" class="headerlink" title="节点与关系"></a>节点与关系</h4><pre><code class="lang-python">from py2neo.data import Node, Relationship
+a = Node(&#39;Person&#39;, name=&quot;Alice&quot;)
+b = Node(&quot;Person&quot;, name=&quot;Bob&quot;)
+ab = Relationship(a, &quot;KNOWS&quot;, b)
+ab
+###
+(Alice)-[:KNOWS {}]-&gt;(Bob)
+</code></pre>
+<p>Node 和 Relationship 都继承了 PropertyDict 类，它可以赋值很多属性，类似于字典的形式，例如可以通过如下方式对 Node 或 Relationship 进行属性赋值，接着上面的代码，实例如下:</p>
+<pre><code class="lang-python">a[&#39;age&#39;] = 20
+b[&#39;age&#39;] = 21
+ab[&#39;time&#39;] = &#39;2017/08/31&#39;
+print(a, b, ab)
+
+###out
+(:Person {age: 20, name: &#39;Alice&#39;}) (:Person {age: 21, name: &#39;Bob&#39;}) (Alice)-[:KNOWS {time: &#39;2019/6/5&#39;}]-&gt;(Bob)
+</code></pre>
+<p>使用<strong>update</strong>批量对属性进行更新</p>
+<pre><code class="lang-python">data = {
+    &#39;name&#39;: &#39;Amy&#39;,
+    &#39;age&#39;: 21
+}
+a.update(data)
+print(a)
+
+###out
+(:Person {age: 21, name: &#39;Amy&#39;})
+</code></pre>
+<h3 id="Subgraph子图"><a href="#Subgraph子图" class="headerlink" title="Subgraph子图"></a>Subgraph子图</h3><p>Subgraph，子图，是 Node 和 Relationship 的集合，最简单的构造子图的方式是通过关系运算符|，实例如下：</p>
+<pre><code class="lang-python">s = a | b | ab
+print(s)
+
+###out
+&lt;py2neo.data.Subgraph at 0x7fe45c8b2470&gt;
+# ({(alice:Person {name:&quot;Alice&quot;}), (bob:Person {name:&quot;Bob&quot;})}, {(alice)-[:KNOWS]-&gt;(bob)})
+</code></pre>
+<ul>
+<li>在v4版本，输出s.nodes是一个SetView对象，需要使用<strong>list转换</strong>,即可打印出来</li>
+</ul>
+<pre><code class="lang-python">print(list(s.nodes))
+
+###out
+[(:Person {name: &#39;Alice&#39;}), (:Person {name: &#39;Bob&#39;})]
+</code></pre>
+<h3 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h3><p>在 database 模块中包含了和 Neo4j 数据交互的 API，最重要的当属 <strong>Graph</strong>，它代表了 Neo4j 的图数据库，同时 Graph 也提供了许多方法来操作 Neo4j 数据库，直接调用cyper语句操作neo4j。</p>
+<pre><code>from py2neo import Graph
+
+graph = Graph(password=&quot;123456&quot;)
+
+# 执行查询
+graph.run(&quot;MATCH (a:Person) RETURN a.name, a.born LIMIT 4&quot;)
+
+# 创建节点关系
+node = Node(.....)
+graph.create(node)
+</code></pre><p>参考：</p>
+<ul>
+<li><a href="https://py2neo.org/v4/" target="_blank" rel="noopener">The py2neo v4 Handbook</a></li>
+<li><a href="https://blog.csdn.net/qq_19707521/article/details/80060675" target="_blank" rel="noopener">Neo4j操作与py2neo用法</a></li>
+</ul>
 
         
     
