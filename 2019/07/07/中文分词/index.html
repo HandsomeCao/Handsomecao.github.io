@@ -43,7 +43,7 @@
     
     <title>
         
-            docker使用 | 
+            中文分词 | 
         
         Cao
     </title>
@@ -54,7 +54,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="The road towards Deep Learning">
-    <meta name="keywords" content=",docker 工具">
+    <meta name="keywords" content=",分词 算法 nlp">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -220,7 +220,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Cao">
-    <meta name="msapplication-starturl" content="http://yoursite.com/2018/05/13/docker/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2019/07/07/中文分词/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Cao">
@@ -235,16 +235,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/2018/05/13/docker/">
+    <meta property="og:url" content="http://yoursite.com/2019/07/07/中文分词/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="docker使用 | Cao">
+    <meta property="og:title" content="中文分词 | Cao">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="The road towards Deep Learning">
-    <meta property="og:article:tag" content="docker 工具"> 
+    <meta property="og:article:tag" content="分词 算法 nlp"> 
 
     
-        <meta property="article:published_time" content="Sun May 13 2018 22:51:10 GMT+0800">
-        <meta property="article:modified_time" content="Thu Jun 21 2018 01:06:56 GMT+0800">
+        <meta property="article:published_time" content="Sun Jul 07 2019 20:07:43 GMT+0800">
+        <meta property="article:modified_time" content="Mon Jul 08 2019 19:54:46 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -252,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/2018/05/13/docker/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2019/07/07/中文分词/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yoursite.com/2018/05/13/docker/index.html",
-    "headline": "docker使用",
-    "datePublished": "Sun May 13 2018 22:51:10 GMT+0800",
-    "dateModified": "Thu Jun 21 2018 01:06:56 GMT+0800",
+    "mainEntityOfPage": "http://yoursite.com/2019/07/07/中文分词/index.html",
+    "headline": "中文分词",
+    "datePublished": "Sun Jul 07 2019 20:07:43 GMT+0800",
+    "dateModified": "Mon Jul 08 2019 19:54:46 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "HandsomeCao",
@@ -285,7 +285,7 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",docker 工具",
+    "keywords": ",分词 算法 nlp",
     "description": "The road towards Deep Learning",
 }
 </script>
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Docker"><span class="post-toc-number">1.</span> <span class="post-toc-text">Docker</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#中文分词算法及实现"><span class="post-toc-number">1.</span> <span class="post-toc-text">中文分词算法及实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#主流方法"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">主流方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#评价指标"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">评价指标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基于词表的最大匹配方法"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">基于词表的最大匹配方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基于n-gram语言模型的分词方法"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">基于n-gram语言模型的分词方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#P-left-w-i-w-i-1-right-frac-P-left-w-i-1-w-i-right-P-left-w-i-1-right"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">$P\left(w_{i} | w_{i-1}\right)=\frac{P\left(w_{i-1}, w_{i}\right)}{P\left(w_{i-1}\right)}$</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol></li></ol>
     </ul>
     
 
@@ -383,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                docker使用
+                中文分词
             </p>
         </div>
 
@@ -402,7 +402,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>HandsomeCao</strong>
-        <span>5月 13, 2018</span>
+        <span>7月 07, 2019</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -426,7 +426,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/docker-工具/">docker 工具</a>
+        <a class="post_tag-link" href="/tags/分词-算法-nlp/">分词 算法 nlp</a>
     </ul>
     
 
@@ -443,7 +443,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=docker使用&url=http://yoursite.com/2018/05/13/docker/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=中文分词&url=http://yoursite.com/2019/07/07/中文分词/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -455,7 +455,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/05/13/docker/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/07/07/中文分词/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -483,48 +483,114 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p><a href="www.docker.com">Docker</a>是一个<strong>开源</strong>的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。按理说，Docker并不是专门用于深度学习的工具，它运用非常广泛，对于任何编程的项目，Docker都能提供很好的帮助。</p>
-<p>在实验室中需要使用Docker的原因主要是为了</p>
-<blockquote>
-<p>防止在服务器中相互影响和破坏底层环境，从而使用Docker为每个人生成一个虚拟的单独的环境</p>
-</blockquote>
-<p>这是相当有用的，对于每个生产环境，都可以生产一个单独的<strong>容器</strong>, 同时与其他生产环境相隔离。这和虚拟机似乎有点类似，但相比较于虚拟机，Docker所生成的容器具有<strong>更快速，更轻量</strong> 的效果。在Docker中有两个很重要的概念</p>
+        <h2 id="中文分词算法及实现"><a href="#中文分词算法及实现" class="headerlink" title="中文分词算法及实现"></a>中文分词算法及实现</h2><h3 id="主流方法"><a href="#主流方法" class="headerlink" title="主流方法"></a>主流方法</h3><p>中文分类方法大致可以分为以下三类：</p>
 <ul>
-<li><strong>容器</strong>(container)，其对应于面向对象方法中的<strong>对象</strong></li>
-<li><strong>镜像</strong>(image)， 其对应于面向对象方法中的<strong>类</strong></li>
+<li>基于词表的分词方法<ul>
+<li>正向最大匹配法FMM</li>
+<li>逆向最大匹配法BMM</li>
+<li>N-最短路径方法</li>
 </ul>
-<p>所以使用Docker的过程通常为：</p>
-<ol>
-<li>自己或者找到一个别人配好的适合自己生产环境的镜像。通常自己配镜像是通过<strong>DockerFile</strong>文件</li>
-</ol>
-<pre><code class="lang-bash">列出本机的所有 image 文件。
-
-$ docker images
-
-删除 image 文件
-
-$ docker image rm [imageName]
-</code></pre>
-<p>image 文件是通用的，一台机器的 image 文件拷贝到另一台机器，照样可以使用。一般来说，为了节省时间，我们应该尽量使用别人制作好的 image 文件，而不是自己制作。即使要定制，也应该基于别人的 image 文件进行加工，而不是从零开始制作。</p>
-<pre><code class="lang-bash"># pull 命令从官网抓取hello-world镜像
-$ docker image pull library/hello-world
-</code></pre>
-<ol>
-<li>利用得到的image文件，生成容器实例</li>
-</ol>
-<pre><code class="lang-bash">$ docker container run hello-world
-</code></pre>
-<p>在docker中最常用的就是<code>docker run</code>命令，也是最重要的。这里就用实验室所用的<code>docker run</code>命令展现其每个参数的意义</p>
-<pre><code class="lang-bash">$ docker run -p 7981:8888 -it --name=[容器名称] -v /home/cao/workspace:/root/workspace --device /dev/nvidia-uvm --device /dev/nvidia0 --device /dev/nvidia1 [镜像名称] /bin/bash
-</code></pre>
-<ul>
-<li><strong>-p</strong> : 端口映射，即容器的8888端口映射到本机的7981端口</li>
-<li><strong>-it</strong>  : 表示进入容器之后，进入命令行交互模式</li>
-<li><strong>—name</strong> : 指定生成容器的名称，<em>一定要指定</em>。</li>
-<li><strong>-v</strong>  : 路径映射，即容器的<em>/root/workspace</em>， 与本机的<em>/home/cao/workspace</em> 相互挂载，所以不能轻易删除</li>
-<li><strong>—device</strong> : 映射本机的指定显卡</li>
+</li>
+<li>基于统计模型的分词方法<ul>
+<li>基于n-gram语言模型的分词方法</li>
 </ul>
-<p>这样在生成一个容器之后，通常就只需要对此容器进行操作，而生产环境全由<code>docker attach [容器名称]</code>进入容器之中操作。使用<code>docker -h</code>可查看全部帮助。</p>
+</li>
+<li>基于序列标注的分词方法<ul>
+<li>基于HMM的分词方法</li>
+<li>基于CRF的分词方法</li>
+<li>基于词感知机的分词方法</li>
+<li>基于深度学习的端到端的分词方法</li>
+</ul>
+</li>
+</ul>
+<h3 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h3><ul>
+<li><p>准确率(Precision)</p>
+<script type="math/tex; mode=display">Precision=\frac{WordCount(CorrectResults)}{WordCount(TrainSet)}</script></li>
+<li><p>召回率(Recall)</p>
+<script type="math/tex; mode=display">Recal=\frac{WordCount(CorrectResults)}{WordCount(TestSet)}</script></li>
+<li><p>F-测度</p>
+<script type="math/tex; mode=display">F1=\frac{2 * P*R}{P+R}</script></li>
+<li><p>未登录词的召回率(ROOV)</p>
+</li>
+<li>词典词的召回率（RIV）</li>
+</ul>
+<h3 id="基于词表的最大匹配方法"><a href="#基于词表的最大匹配方法" class="headerlink" title="基于词表的最大匹配方法"></a>基于词表的最大匹配方法</h3><p>正向最大匹配和反向最大匹配算法实际上都是通过贪心的方法依据词典切分出当前位置上长度最大的词，只是两种方法对于句子的处理方向不同而已。FMM实质上是很简单粗暴的匹配方法，对于一些歧义词的处理能力很一般。一般来说，BMM方法要优于FMM方法，但现在是几乎不会使用这种基于匹配的方法了。</p>
+<p>BMM算法：</p>
+<p>逆向匹配法思想与正向一样，只是从右向左切分，这里举一个例子：<br>输入例句：S1=”计算语言学课程有意思” ；<br>定义：最大词长MaxLen = 5；S2= “ “；分隔符 = “/”；<br>假设存在词表：…，计算语言学，课程，意思，…；<br><strong>最大逆向匹配分词算法</strong>过程如下：<br>（1）S2=””；S1不为空，从S1右边取出候选子串W=”课程有意思”；<br>（2）查词表，W不在词表中，将W最左边一个字去掉，得到W=”程有意思”；<br>（3）查词表，W不在词表中，将W最左边一个字去掉，得到W=”有意思”；<br>（4）查词表，W不在词表中，将W最左边一个字去掉，得到W=”意思”<br>（5）查词表，“意思”在词表中，将W加入到S2中，S2=” 意思/“，并将W从S1中去掉，此时S1=”计算语言学课程有”；<br>（6）S1不为空，于是从S1左边取出候选子串W=”言学课程有”；<br>（7）查词表，W不在词表中，将W最左边一个字去掉，得到W=”学课程有”；<br>（8）查词表，W不在词表中，将W最左边一个字去掉，得到W=”课程有”；<br>（9）查词表，W不在词表中，将W最左边一个字去掉，得到W=”程有”；<br>（10）查词表，W不在词表中，将W最左边一个字去掉，得到W=”有”，这W是单字，将W加入到S2中，S2=“ /有 /意思”，并将W从S1中去掉，此时S1=”计算语言学课程”；<br>（11）S1不为空，于是从S1左边取出候选子串W=”语言学课程”；<br>（12）查词表，W不在词表中，将W最左边一个字去掉，得到W=”言学课程”；<br>（13）查词表，W不在词表中，将W最左边一个字去掉，得到W=”学课程”；<br>（14）查词表，W不在词表中，将W最左边一个字去掉，得到W=”课程”；<br>（15）查词表，“意思”在词表中，将W加入到S2中，S2=“ 课程/ 有/ 意思/”，并将W从S1中去掉，此时S1=”计算语言学”；<br>（16）S1不为空，于是从S1左边取出候选子串W=”计算语言学”；<br>（17）查词表，“计算语言学”在词表中，将W加入到S2中，S2=“计算语言学/ 课程/ 有/ 意思/”，并将W从S1中去掉，此时S1=””；<br>（18）S1为空，输出S2作为分词结果，分词过程结束。</p>
+<pre><code class="lang-python">class BMM(object):
+    def __init__(self,
+                 dict_path=&#39;./dict.txt&#39;,
+                 max_word_length=5,
+                 split_mark=&#39;/&#39;):
+        self.dict = self.load_dict(_get_abs_path(dict_path))
+        self.max_word_length = max_word_length
+        self.split_mark = split_mark
+
+    def load_dict(self, path):
+        word_dict = []
+        with open(path, &#39;r&#39;, encoding=&#39;utf-8&#39;) as fr:
+            for line in fr:
+                word = line.strip().split(&#39; &#39;)[0]
+                word_dict.append(word)
+        return word_dict
+
+    def seg(self, line):
+        &quot;&quot;&quot;
+        seg the line into word list
+        &quot;&quot;&quot;
+        word_list = []
+        s1 = line[-self.max_word_length:]
+        while len(s1):
+            if s1 in self.dict or len(s1) == 1:
+                word_list.append(s1)
+                s1 = line[:len(line)-len(&#39;&#39;.join(word_list))]
+            else:
+                s1 = s1[1:]
+        return self.split_mark.join(word_list[::-1])
+</code></pre>
+<h3 id="基于n-gram语言模型的分词方法"><a href="#基于n-gram语言模型的分词方法" class="headerlink" title="基于n-gram语言模型的分词方法"></a>基于n-gram语言模型的分词方法</h3><p>假设$S$表示一个有意义的句子，由一连串特定顺序排列的词$w_{1}, w_{2},…., w_{n}$组成，则此句子成立的概率为</p>
+<script type="math/tex; mode=display">P(S)=P\left(w_{1}\right) P\left(w_{2} | w_{1}\right) P\left(w_{3} | w_{1}, w_{2}\right) \cdots P\left(w_{n} | w_{1}, w_{2}, \dots, w_{n-1}\right)</script><p>$P(S)$称为语言模型，<strong>就是建立了一个基于统计的模型去计算一个序列$S$的可能性</strong>。 </p>
+<p><strong>N-gram就是语言模型。</strong>对于前面提到的语言模型从计算上来看，序列的前两个词的条件概率 <img src="https://www.zhihu.com/equation?tex=P%28w_%7B1%7D%29%2CP%28w_%7B2%7D%7Cw_%7B1%7D%29" alt="[公式]"> 不难计算，但是，越到后面的单词可能性越多，无法估算。因此，引入马尔可夫假设：任意一个词出现的概率只和它前面的几个词有关，于是 <img src="https://www.zhihu.com/equation?tex=P%28S%29%3DP%28w_%7B1%7D%29P%28w_%7B2%7D%7Cw_%7B1%7D%29P%28w_%7B3%7D%7Cw_%7B2%7D%29%5Ccdot%5Ccdot%5Ccdot+P%28w_%7Bn%7D%7Cw_%7Bn-1%7D%29" alt="[公式]"> ，这就是N-gram模型中的二元模型(bigram)。同理，可得到一元模型(unigram)、三元模型(trigram)的定义。</p>
+<p>求解概率：</p>
+<h4 id="P-left-w-i-w-i-1-right-frac-P-left-w-i-1-w-i-right-P-left-w-i-1-right"><a href="#P-left-w-i-w-i-1-right-frac-P-left-w-i-1-w-i-right-P-left-w-i-1-right" class="headerlink" title="$P\left(w_{i} | w_{i-1}\right)=\frac{P\left(w_{i-1}, w_{i}\right)}{P\left(w_{i-1}\right)}$"></a>$P\left(w_{i} | w_{i-1}\right)=\frac{P\left(w_{i-1}, w_{i}\right)}{P\left(w_{i-1}\right)}$</h4><p>当训练集语料库足够大，通过其相应的词和词对的频数，相对频度就约等于概率。所以<strong>BI-gram</strong>分词时，有以下步骤：</p>
+<ol>
+<li>首先要准备一个足够大语料库作为训练集，对此语料库构造出<strong>词频统计字典</strong>和<strong>每个词之后的词频度字典</strong></li>
+<li>要分词的语句首先找出所有可能的备选分词结果，根据<strong>词频统计字典</strong>中出现的键递归寻找。</li>
+<li>对每个分词结果，计算其相应的概率$P$，输出最大的就为分词结果。而怎么计算$P$可见下面的代码</li>
+</ol>
+<pre><code class="lang-python">def _get_prob(self, result):
+        &quot;&quot;&quot;
+        计算每种情况的概率分数
+        &quot;&quot;&quot;
+        p = 1.0
+        for index in range(len(result)):
+            if index == 0:
+                if result[index] in self.word_count:
+                    # 第一项a在词频表中，p = (count(a) + 1) / count(all)
+                    p *= ((self.word_count[result[index]] + 1) / self.length)
+                else:
+                    # 若不在则 p = 1 / count(all)
+                    p *= (1 / self.length)
+            else:
+                if result[index - 1] in self.word2_dict and \
+                        result[index] in self.word2_dict[result[index - 1]]:
+                    # 若前一项a存在于gram表，且下一项b存在于它对应的value中
+                    # p = (count(b|a) + 1) / count(|a)
+                    p *= ((self.word2_dict[result[index - 1]][result[index]] + 1) /
+                          self.word_next_count[result[index - 1]])
+                elif result[index - 1] in self.word2_dict:
+                    # 若前一项a存在于gram表，但下一项b不存在于它对应的value中
+                    # p = 1 / count(|a)
+                    p *= (1 / self.word_next_count[result[index - 1]])
+                else:
+                    p = p * pow(0.1, 10)
+        return p
+</code></pre>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
+<li>比赛<strong>SIGHAN</strong><a href="http://sighan.cs.uchicago.edu/bakeoff2005/" target="_blank" rel="noopener">官网</a></li>
+<li><a href="http://www.52nlp.cn/maximum-matching-method-of-chinese-word-segmentation" target="_blank" rel="noopener">中文分词入门之最大匹配法</a></li>
+<li></li>
+</ul>
 
         
     
@@ -545,21 +611,13 @@ $ docker image pull library/hello-world
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/05/27/mAP/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2018/05/13/cnn-basic/" id="post_nav-older" class="next-content">
+        <a href="/2019/06/10/redis/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
