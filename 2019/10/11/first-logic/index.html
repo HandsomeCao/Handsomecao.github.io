@@ -54,7 +54,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="The road towards Deep Learning">
-    <meta name="keywords" content=",nlp">
+    <meta name="keywords" content=",nlp,算法">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -240,11 +240,11 @@
     <meta property="og:title" content="first-logic | Cao">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="The road towards Deep Learning">
-    <meta property="og:article:tag" content="nlp"> 
+    <meta property="og:article:tag" content="nlp"> <meta property="og:article:tag" content="算法"> 
 
     
         <meta property="article:published_time" content="Fri Oct 11 2019 19:59:36 GMT+0800">
-        <meta property="article:modified_time" content="Sat Oct 12 2019 16:51:28 GMT+0800">
+        <meta property="article:modified_time" content="Sat Oct 12 2019 17:03:48 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yoursite.com/2019/10/11/first-logic/index.html",
     "headline": "first-logic",
     "datePublished": "Fri Oct 11 2019 19:59:36 GMT+0800",
-    "dateModified": "Sat Oct 12 2019 16:51:28 GMT+0800",
+    "dateModified": "Sat Oct 12 2019 17:03:48 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "HandsomeCao",
@@ -285,7 +285,7 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",nlp",
+    "keywords": ",nlp,算法",
     "description": "The road towards Deep Learning",
 }
 </script>
@@ -426,7 +426,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/nlp/">nlp</a>
+        <a class="post_tag-link" href="/tags/nlp/">nlp</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/算法/">算法</a>
     </ul>
     
 
@@ -958,6 +958,26 @@ It will not impact the appearance and can give developers a lot of support :)
 </script>
 
 <!-- MathJax Load-->
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+    <script src="https://cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
 
 
 <!-- Bing Background -->
