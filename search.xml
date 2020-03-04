@@ -26,9 +26,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> nlp </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -82,11 +82,26 @@
       
         <tags>
             
+            <tag> nlp </tag>
+            
             <tag> 分词 </tag>
             
             <tag> 算法 </tag>
             
-            <tag> nlp </tag>
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>使用logstash同步Elasticsearch和mysql</title>
+      <link href="/2019/06/25/logstash/"/>
+      <url>/2019/06/25/logstash/</url>
+      <content type="html"><![CDATA[<h2 id="同步Mysql数据库到Elasticsearch中"><a href="#同步Mysql数据库到Elasticsearch中" class="headerlink" title="同步Mysql数据库到Elasticsearch中"></a>同步Mysql数据库到Elasticsearch中</h2><h3 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h3><ul><li>在<a href="https://www.elastic.co/cn/downloads/logstash" target="_blank" rel="noopener">官网</a>下载logstash对应的tar.gz压缩文件，使用<code>tar -xzvf</code>进行解压</li><li>解压之后进入文件夹，安装插件<code>logstash-input-jdbc</code></li></ul><pre><code class="lang-bash">./bin/logstash-plugin install logstash-input-jdbc</code></pre><ul><li>准备对应的<code>mysql-connector-java.jar</code>，可以在官网下载</li></ul><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>创建配置文件<code>logstash.conf</code>并在里面写入配置</p><pre><code class="lang-conf">input {        jdbc {                jdbc_driver_library =&gt; &quot;/home/mysql-connector-java-8.0.16.jar&quot;                jdbc_driver_class =&gt; &quot;com.mysql.jdbc.Driver&quot;                jdbc_connection_string =&gt; &quot;jdbc:mysql://127.0.0.1:3306/test&quot;                jdbc_user =&gt; &quot;root&quot;                jdbc_password =&gt; &quot;123&quot;                jdbc_paging_enabled =&gt; &quot;true&quot;                jdbc_page_size =&gt; &quot;50000&quot;                use_column_value =&gt; true                tracking_column =&gt; &quot;id&quot;  # 追踪主键id                tracking_column_type =&gt; numeric                statement =&gt; &quot;SELECT id, name, address FROM employee WHERE id &gt; :sql_last_value&quot;  #sql_last_value为上次最后id，以免插入重复                schedule =&gt; &quot;* * * * *&quot;        }}filter {        json{                source =&gt; &quot;message&quot;                remove_field =&gt; [&quot;message&quot;]        }}output {        stdout {                codec =&gt; rubydebug        }        elasticsearch {                hosts =&gt; &quot;127.0.0.1:9200&quot;                index =&gt; &quot;logstash_test&quot;  # 要写入的index                document_id =&gt; &quot;%{id}&quot;        }}</code></pre><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><pre><code class="lang-bash">./bin/logstash -f ./logstash.conf</code></pre><p>启动logstash后将会每隔一分钟追踪mysql中数据，同步到elasticsearch之中</p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> elasticsearch logstash </tag>
             
         </tags>
       
