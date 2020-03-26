@@ -43,7 +43,7 @@
     
     <title>
         
-            K-近邻算法 | 
+            ir_metrics | 
         
         Cao
     </title>
@@ -54,7 +54,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="The road towards Deep Learning">
-    <meta name="keywords" content=",机器学习">
+    <meta name="keywords" content=",nlp">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -220,7 +220,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Cao">
-    <meta name="msapplication-starturl" content="http://yoursite.com/2018/06/05/knn/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2019/12/27/ir-metrics/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Cao">
@@ -235,16 +235,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/2018/06/05/knn/">
+    <meta property="og:url" content="http://yoursite.com/2019/12/27/ir-metrics/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="K-近邻算法 | Cao">
+    <meta property="og:title" content="ir_metrics | Cao">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="The road towards Deep Learning">
-    <meta property="og:article:tag" content="机器学习"> 
+    <meta property="og:article:tag" content="nlp"> 
 
     
-        <meta property="article:published_time" content="Tue Jun 05 2018 21:47:52 GMT+0800">
-        <meta property="article:modified_time" content="Thu Jun 21 2018 01:06:58 GMT+0800">
+        <meta property="article:published_time" content="Fri Dec 27 2019 01:18:42 GMT+0800">
+        <meta property="article:modified_time" content="Fri Mar 27 2020 01:21:17 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -252,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/2018/06/05/knn/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2019/12/27/ir-metrics/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yoursite.com/2018/06/05/knn/index.html",
-    "headline": "K-近邻算法",
-    "datePublished": "Tue Jun 05 2018 21:47:52 GMT+0800",
-    "dateModified": "Thu Jun 21 2018 01:06:58 GMT+0800",
+    "mainEntityOfPage": "http://yoursite.com/2019/12/27/ir-metrics/index.html",
+    "headline": "ir_metrics",
+    "datePublished": "Fri Dec 27 2019 01:18:42 GMT+0800",
+    "dateModified": "Fri Mar 27 2020 01:21:17 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "HandsomeCao",
@@ -285,7 +285,7 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",机器学习",
+    "keywords": ",nlp",
     "description": "The road towards Deep Learning",
 }
 </script>
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#K-近邻算法-KNN"><span class="post-toc-number">1.</span> <span class="post-toc-text">K-近邻算法(KNN)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#工作原理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">工作原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#操作"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实战"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">实战</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#检索中常用指标"><span class="post-toc-number">1.</span> <span class="post-toc-text">检索中常用指标</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Mean-ReciProcal-Rank-MRR"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Mean ReciProcal Rank(MRR)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Precision"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Precision</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#p-k-则是计算前k位"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">p@k 则是计算前k位</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Average-Precision-AerP"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Average Precision(AerP)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Mean-average-precision"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Mean average precision</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Discounted-Cumulative-Gain-DCG"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">Discounted Cumulative Gain(DCG)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#NDCG-Normalized-DCG"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">NDCG (Normalized DCG)</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -383,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                K-近邻算法
+                ir_metrics
             </p>
         </div>
 
@@ -402,7 +402,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>HandsomeCao</strong>
-        <span>6月 05, 2018</span>
+        <span>12月 27, 2019</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -426,7 +426,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/机器学习/">机器学习</a>
+        <a class="post_tag-link" href="/tags/nlp/">nlp</a>
     </ul>
     
 
@@ -443,7 +443,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=K-近邻算法&url=http://yoursite.com/2018/06/05/knn/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=ir_metrics&url=http://yoursite.com/2019/12/27/ir-metrics/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -455,7 +455,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/06/05/knn/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/12/27/ir-metrics/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -483,71 +483,134 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="K-近邻算法-KNN"><a href="#K-近邻算法-KNN" class="headerlink" title="K-近邻算法(KNN)"></a>K-近邻算法(KNN)</h2><blockquote>
-<p>k-近邻算法采用测量不同特征值之间的距离方法进行分类</p>
-</blockquote>
-<ul>
-<li>监督学习方法，适用于分类</li>
-<li>优点：精度高，对异常值不敏感，无数据输入假定。</li>
-<li>缺点：计算复杂度高，空间复杂度高。</li>
-<li>适用数据范围：数值型，标称型。</li>
-</ul>
-<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>如果存在一个样本数据集合，也称作训练样本集，并且样本集中每个数据都存在<strong>标签</strong>，即我们知道样本集中每一数据与所属分类的对应关系。输入没有标签的新数据后，将新数据的每个特征与样本集中数据对应的特征进行比较，然后算法提取样本集中特征最相似数据<strong>（最近邻）</strong>的分类标签。一般来说，我们只选择样本数据集中前k个最相似的数据，这就是k-近邻算法中k的出处，通常k是<strong>不大于20</strong>的整数。最后，选择k个最相似数据中出现次数最多的分类，作为新数据的分类。</p>
-<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p>对未知类别属性的数据集中的每个点依次执行以下操作：</p>
-<ol>
-<li>计算已知类别数据集中的点与当前点之间的距离；</li>
-<li>按照距离递增次序排序；</li>
-<li>选取与当前点距离最小的k个点；</li>
-<li>确定前k个点所在类别的出现频率；</li>
-<li>返回前k个点出现频率最高的类别作为当前点的预测分类</li>
-</ol>
-<p>其中计算距离通常采用<strong>欧式距离公式</strong>：</p>
-<script type="math/tex; mode=display">
-d=\sqrt{(xA_{0}-xB_{0})^{2}+(xA_{1}-xB_{1})^{2}}</script><h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><pre><code class="lang-python">import numpy as np
-import operator
-
-def CreateDataSet():
-    &quot;&quot;&quot;
-    Create some fake data
-    &quot;&quot;&quot;
-    group = np.array([[1.0,1.1],[1.0,1.0],[0,0],[0,0.1]])
-    labels = [&#39;A&#39;,&#39;A&#39;,&#39;B&#39;,&#39;B&#39;]
-    return group, labels
-
-def classify0(inX, dataSet, labels, k):
-    &quot;&quot;&quot;
-    KNN algorithm:
-    1. calculate the distance between every data from 
-       sample with the target data.
-    2. sort these distances by ascending
-    3. get the top k data with smallest distance
-    4. confirm the frequnces of topk&#39;s class
-    5. return the highest frequncy of class  
-    &quot;&quot;&quot;
-    dataSetSize = dataSet.shape[0]  # the amount of data
-
-    # calculate the distance between two points
-    diffMat = np.tile(inX, (dataSetSize, 1)) - dataSet
-    sqDiffMat = diffMat ** 2
-    sqDistances = sqDiffMat.sum(axis=1)
-    distances = sqDistances ** 0.5
-    sortedDistIndices = distances.argsort()
-
-    # choose the topk
-    classCount = {}
-    for i in range(k):
-        voteIlabel = labels[sortedDistIndices[i]]
-        classCount[voteIlabel] = classCount.get(voteIlabel, 0) + 1
-    sortedClassCount = sorted(classCount.items(),
-        key=operator.itemgetter(1), reverse=True)
-    return sortedClassCount[0][0]
-
-if __name__ == &#39;__main__&#39;:
-    group, labels = CreateDataSet()
-    output = classify0([0, 0], group, labels, 3)
-    print(output)
+        <h2 id="检索中常用指标"><a href="#检索中常用指标" class="headerlink" title="检索中常用指标"></a>检索中常用指标</h2><h3 id="Mean-ReciProcal-Rank-MRR"><a href="#Mean-ReciProcal-Rank-MRR" class="headerlink" title="Mean ReciProcal Rank(MRR)"></a>Mean ReciProcal Rank(MRR)</h3><p>多个查询的倒数排名的均值.</p>
+<script type="math/tex; mode=display">MRR = \frac{1}{N}\sum_{i=1}^{N}\frac{1}{Rank_{i}}</script><pre><code class="lang-python">import numpy as np
+y_pred = np.asarray([0.2,0.3,0.7,1.0])
+y_true = np.asarray([1,0,0,0])
 </code></pre>
-<p><a href="https://github.com/HandsomeCao/Machine-Learning-learn/tree/master/KNN" target="_blank" rel="noopener">代码</a></p>
+<pre><code class="lang-python">coupled_pair = list(zip(y_true, y_pred))
+coupled_pair = np.asarray(sorted(coupled_pair, key=lambda x: x[1], reverse=True))
+coupled_pair
+</code></pre>
+<pre><code>array([[0. , 1. ],
+       [0. , 0.7],
+       [0. , 0.3],
+       [1. , 0.2]])
+</code></pre><pre><code class="lang-python">for idx, (label, pred) in enumerate(coupled_pair):
+    if label &gt; 0.:
+        print(1. / (idx + 1))
+        break
+</code></pre>
+<pre><code>0.25
+</code></pre><pre><code class="lang-python">from matchzoo.metrics import MeanReciprocalRank
+
+MeanReciprocalRank()(y_true, y_pred)
+</code></pre>
+<pre><code>0.25
+</code></pre><h3 id="Precision"><a href="#Precision" class="headerlink" title="Precision"></a>Precision</h3><p>通常记为P@k, k为排序后的前k位</p>
+<pre><code class="lang-python">y_true = [0,0,0,1]
+y_pred = [0.2, 0.4, 0.3, 0.1]
+coupled_pair = list(zip(y_true, y_pred))
+coupled_pair = np.asarray(sorted(coupled_pair, key=lambda x: x[1], reverse=True))
+coupled_pair
+</code></pre>
+<pre><code>array([[0. , 0.4],
+       [0. , 0.3],
+       [0. , 0.2],
+       [1. , 0.1]])
+</code></pre><h4 id="p-k-则是计算前k位"><a href="#p-k-则是计算前k位" class="headerlink" title="p@k 则是计算前k位"></a>p@k 则是计算前k位</h4><pre><code class="lang-python">precision = 0.0
+k = 4
+for idx, (label, score) in enumerate(coupled_pair):
+    if idx &gt;= k:
+        break
+    if label &gt; 0.:
+        precision += 1
+print(precision / k)
+</code></pre>
+<pre><code>0.25
+</code></pre><h3 id="Average-Precision-AerP"><a href="#Average-Precision-AerP" class="headerlink" title="Average Precision(AerP)"></a>Average Precision(AerP)</h3><p>计算从1到k位的P@k的平均值, AUC(area under PR curve), PR曲线下的面积</p>
+<pre><code class="lang-python">from matchzoo.metrics import Precision
+y_true = [0, 1]
+y_pred = [0.1, 0.6]
+
+precision_metrics = [Precision(k + 1) for k in range(len(y_pred))]
+out = [metric(y_true, y_pred) for metric in precision_metrics]
+if not out:
+    AP = 0.
+else:
+    AP = np.mean(out).item() 
+AP
+</code></pre>
+<pre><code>0.75
+</code></pre><h3 id="Mean-average-precision"><a href="#Mean-average-precision" class="headerlink" title="Mean average precision"></a>Mean average precision</h3><p>若检索出四个相关文档（1，2，4，7）<br>则map = (1/1 + 2/2 + 3/4 + 4/7)/4，再对所有问题求平均</p>
+<pre><code class="lang-python">y_true = [0, 1, 0, 0]
+y_pred = [0.1, 0.6, 0.2, 0.3]
+coupled_pair = list(zip(y_true, y_pred))
+coupled_pair = np.asarray(sorted(coupled_pair, key=lambda x: x[1], reverse=True))
+coupled_pair
+</code></pre>
+<pre><code>array([[1. , 0.6],
+       [0. , 0.3],
+       [0. , 0.2],
+       [0. , 0.1]])
+</code></pre><pre><code class="lang-python">result = 0.
+pos = 0
+for idx, (label, score) in enumerate(coupled_pair):
+    # 0. is threshold
+    if label &gt; 0.:
+        pos += 1.
+        result += pos / (idx + 1.)
+if pos == 0:
+    MAP = 0.
+else:
+    MAP = result / pos
+MAP
+</code></pre>
+<pre><code>1.0
+</code></pre><h3 id="Discounted-Cumulative-Gain-DCG"><a href="#Discounted-Cumulative-Gain-DCG" class="headerlink" title="Discounted Cumulative Gain(DCG)"></a>Discounted Cumulative Gain(DCG)</h3><p>需要考虑排序的顺序。</p>
+<script type="math/tex; mode=display">\mathrm{DCG} @ \mathrm{k}=\sum_{i=1}^{k} \frac{2^{\mathrm{reli}}-1}{\log _{2(i+1)}}</script><pre><code class="lang-python">y_true = [0, 1, 2, 0]
+y_pred = [0.4, 0.2, 0.5, 0.7]
+coupled_pair = list(zip(y_true, y_pred))
+coupled_pair = np.asarray(sorted(coupled_pair, key=lambda x: x[1], reverse=True))
+coupled_pair
+</code></pre>
+<pre><code>array([[0. , 0.7],
+       [2. , 0.5],
+       [0. , 0.4],
+       [1. , 0.2]])
+</code></pre><pre><code class="lang-python">import math
+
+result = 0.
+k = 3
+for i, (label, score) in enumerate(coupled_pair):
+    if i &gt;= k:
+        break
+    if label &gt; 0.:
+        result += (math.pow(2., label) - 1.) / math.log(2. + i)
+print(round(result, 2))
+</code></pre>
+<pre><code>2.73
+</code></pre><h3 id="NDCG-Normalized-DCG"><a href="#NDCG-Normalized-DCG" class="headerlink" title="NDCG (Normalized DCG)"></a>NDCG (Normalized DCG)</h3><p>首先要计算出排序完全正确，即理想状态下的IDCG</p>
+<script type="math/tex; mode=display">\operatorname{IDCG} @ \mathrm{k}=\sum_{i=1}^{| \mathrm{REL}} \frac{2^{\mathrm{rel}_{-}}-1}{\log _{2}(\mathrm{i}+1)}</script><p>其中REL是理想状态下排序.然后计算NDCG:</p>
+<script type="math/tex; mode=display">\mathrm{NDCG} @ \mathrm{Ok}=\frac{\mathrm{DCG} @ \mathrm{k}}{\mathrm{IDCG} @ \mathrm{k}}</script><pre><code class="lang-python">coupled_pair
+</code></pre>
+<pre><code>array([[0. , 0.7],
+       [2. , 0.5],
+       [0. , 0.4],
+       [1. , 0.2]])
+</code></pre><pre><code class="lang-python">from matchzoo.metrics import DiscountedCumulativeGain
+k = 2
+
+dcg_metric = DiscountedCumulativeGain(k=k, threshold=0.)
+idcg_val = dcg_metric(y_true, y_true)
+dcg_val = dcg_metric(y_true, y_pred)
+NDCG = dcg_val / idcg_val if idcg_val != 0. else 0.
+NDCG
+</code></pre>
+<pre><code>0.52129602861432
+</code></pre><p>参考</p>
+<p><a href="https://github.com/NTMC-Community/MatchZoo-py" target="_blank" rel="noopener">matchzoo-py</a></p>
+<p><a href="https://www.cnblogs.com/memento/p/8673309.html" target="_blank" rel="noopener">信息检索评价指标</a></p>
 
         
     
@@ -568,7 +631,7 @@ if __name__ == &#39;__main__&#39;:
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/06/26/faster-rcnn/" id="post_nav-newer" class="prev-content">
+        <a href="/2020/03/02/linear-algebra/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -582,7 +645,7 @@ if __name__ == &#39;__main__&#39;:
 
     <!-- Next Nav -->
     
-        <a href="/2018/05/27/mAP/" id="post_nav-older" class="next-content">
+        <a href="/2019/10/11/first-logic/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
